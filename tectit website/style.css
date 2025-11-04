@@ -15,12 +15,13 @@ body {
    Header Section
 =========================== */
 .header {
+  
   height: 65px;
   width: 100%;
   background-color: white;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
   position: fixed;
   top: 0;
   left: 0;
@@ -29,11 +30,24 @@ body {
   border-radius: 5px;
 }
 
+
 .header a {
+ 
+  display: inline-block;          
+  font-size: 18px;                
+  transition: transform 0.2s ease, color 0.2s ease;
+  color: #000;
   text-decoration: none;
-  color: black;
   font-weight: bolder;
-  width: 135px;
+}
+.header a:hover{
+  
+  transform: scale(1.05);
+}
+.header a.active,
+.hm.active {
+  color: #007bff !important;    
+  transform: none;               
 }
 #logo{ height: 50px;
      width: 130px;
@@ -41,17 +55,42 @@ body {
      margin-left: 10px;
 }
 
+/* Active and Hovered Links */
+ .hm {
+  
+  color: #000;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 0  5px;
+  transition: color 0.2s;
+} 
+
+.hm:hover,
+.hm.active {
+  color: #007bff;
+  border-bottom: 2px solid #007bff;
+}
+
+#home:hover,
+#All:hover,
+#jobs:hover,
+#about:hover {
+  color: #007bff;
+  
+   transform: scale(1.05);
+  
+}
 /* Login Button */
 .login {
-  margin-left: 88%;
+ 
+  position: absolute;
+  right: 20px;
+  border: 3px solid #007bff;
   border-radius: 10px;
-  border: 4px solid #007bff;
-  padding: 5px;
-  border-width: 3px;
+  padding: 5px 12px;
   text-align: center;
-  
-  color: black;
-  position: absolute; 
+  transition: all 0.3s ease;
   
 
 }
@@ -77,6 +116,36 @@ input {
   border-radius: 10px;
   padding-left: 10px;
 }
+/* ===========================
+   Search Section
+=========================== */
+.search-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.search-box {
+  position: relative;
+  display: inline-block;
+}
+
+.search-box input {
+  width: 250px;
+  font-size: 16px;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.search-box i {
+  position: absolute;
+  right: 10px;
+  top: 60%;
+  transform: translateY(-50%);
+  color: black;
+  cursor: pointer;
+}
+
 
 /* ===========================
    Hero Slider Section
@@ -146,82 +215,76 @@ input {
   margin-bottom: 1.5rem;
 }
 
-.btn {
+ .btn {
   display: inline-block;
   padding: 0.7rem 1.5rem;
-  background: #00bcd4;
+  background: #00bcd4; 
   color: white;
   border-radius: 5px;
   text-decoration: none;
   transition: background 0.3s;
-}
+} 
 
-.btn:hover {
+   .btn:hover {
   background: #0097a7;
+} 
+
+ 
+
+
+/* ==========================
+  summary section
+========================== */
+.summary{
+  display: flex;
+}
+.sum{
+  margin-top: 20px;
+  font-size: 45px;
+  height: 65px;
+  width: 43%;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color:#007bff;
+  font-weight: bold;
+  /* background-color: #007bff; */
+  /* box-shadow: black;
+  border: 3px solid black;
+  border-radius: 15px; */
+  margin-left: 2px;
+  padding-left:10px ;
+}
+.suanop{
+  height: 250px;
+  width:250px;
+  background-color: #007bff;
+  margin: 30px;
+  margin-left: 120px;
+  /* border-radius: 15%; */
+  margin-top: 0px;
+  background-image: url(../images/anup.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-/* ===========================
-   Search Section
-=========================== */
-.search-container {
-  text-align: center;
-  margin-top: 50px;
-}
 
-.search-box {
-  position: relative;
-  display: inline-block;
-}
 
-.search-box input {
-  width: 250px;
+
+.summ{
+  height: 350px;
+  width: 60%;
+  margin-top: 25px;
   font-size: 16px;
-  border: 2px solid black;
-  border-radius: 10px;
-  margin-top: 10px;
-}
-
-.search-box i {
-  position: absolute;
-  right: 10px;
-  top: 60%;
-  transform: translateY(-50%);
-  color: black;
-  cursor: pointer;
-}
-
-/* ===========================
-   Navigation Links
-=========================== */
-#home, #All, #jobs, #about {
-  font-size: 16px;
-}
-#home{
-  padding-left:20px;
-}
-
-#home:hover,
-#All:hover,
-#jobs:hover,
-#about:hover {
-  font-size: 20px;
-  color: #007bff;
-}
-
-#home.active {
-  font-size: 20px;
-  color: #007bff;
-}
-
-#jobs {
-  margin-left: 0;
+  margin-left: 10px;
+  font-style: normal;
+  padding-left: 10px;
 }
 
 /* ===========================
    Courses Section
 =========================== */
 .courses {
-  margin-top: 40px;
+  margin-top: 30px;
   margin-left: 5px;
   margin-right: 5px;
   display: flex;
@@ -245,110 +308,72 @@ input {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* ===========================
-   Certificates Section
-=========================== */
-/* .certificates-section {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 20px;
-  text-align: center;
+.slider-container {
+  width: 800px; 
+  height: 520px; 
+           overflow: hidden; 
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            margin-top: 50px;
+            margin-left: 160px;
+            margin-bottom: 50px;
+        }
+
+        
+        .slides {
+           
+            width: 300%;
+            height: 100%;
+            display: flex; 
+
+            
+            animation: slide 8s infinite;
+            
+        }
+
+        
+        .slides img {
+           
+            width: 33.333%;
+            height: 100%;
+            object-fit: cover; 
+        }
+        .slider-container:hover .slides {
+    animation-play-state: paused;
 }
 
-.certificates-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: #2c3e50;
-}
+       
+        @keyframes slide {
+           
+            0% {
+                transform: translateX(0%);
+            }
+            30% {
+                transform: translateX(0%);
+            }
 
-.certificates-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  justify-items: center;
-}
+           
+            33% {
+                transform: translateX(-33.333%); 
+            }
+            63% {
+                transform: translateX(-33.333%);
+            }
 
-.certificate-card {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 100%;
-  max-width: 350px;
-}
+           
+            66% {
+                transform: translateX(-66.666%); 
+            }
+            97% {
+                transform: translateX(-66.666%);
+            }
 
-.certificate-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
+            
+            100% {
+                transform: translateX(0%);
+            }
+        }
 
-.certificate-card img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.card-content {
-  padding: 20px;
-  text-align: left;
-}
-
-.card-content h3 {
-  font-size: 1.4rem;
-  margin-top: 0;
-  margin-bottom: 10px;
-  color: #34495e;
-}
-
-.card-content .issuer {
-  font-size: 0.9rem;
-  color: #7f8c8d;
-  margin-bottom: 20px;
-}
-
-.view-button {
-  display: inline-block;
-  background-color: #3498db;
-  color: #fff;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.view-button:hover {
-  background-color: #2980b9;
-} */
-.crt{
-  height:400px; 
-  width:100%; 
-  background-color: #0c0d0e;
-  display: flex;
-  /* justify-content: center; */
-}
-.crt1{
-  height:400px; 
-  width:33.3%;
-  background-color: aliceblue;
-}
-.crt2{
-   height:400px; 
-  width:33.3%;
-  background-color: #555;
-  
-  background-size: cover;
-}
-.cart2 img{
-  height:400px; 
-  width:33.3%;
-}
-.crt3{
-   height:400px; 
-   width:33.3%; 
-  background-color: blue;
-}
 
 
 /* ===========================
@@ -481,7 +506,7 @@ input {
   gap: 2.5rem;
   padding-block: 1.5rem;
   width: max-content;
-  animation: scroll 25s linear infinite;
+  animation: scroll 15s linear infinite;
 }
 
 .scroller[data-direction="right"] .scroller-inner {
@@ -499,7 +524,7 @@ input {
 }
 
 .scroller-inner img {
-  height: 45px;
+  height: 85px;
   max-width: 150px;
   object-fit: contain;
 }
