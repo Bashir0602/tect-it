@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %} tect it website {%endblock %}</title>
+
+   <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+ 
+  <!-- Bootstrap -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+    crossorigin="anonymous"
+  />
+ 
+  {% block extra_head%} {% endblock %}
+</head>
+<body>
+
+      <!-- Navbar -->
+  <nav>
+    <div class="header">
+      <img id="logo" src="{{ url_for('static',filename='images/logo.jpg')}}" alt="Tech It" />
+
+      <form  method="post">
+        <div class="search-box">
+          <input type="text" placeholder="Type to search..." />
+          <button class="btn-icon"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+      </form>
+     
+      <a id="home" class="nav-link active" href="{{url_for('index')}}">Home</a>
+      <a id="All"  href="{{url_for('courses')}}">All Courses</a>
+      <a id="jobs" href="{{url_for('jobs')}}">Opportunity</a>
+      <a id="about" href="{{url_for('about')}}">About Us</a>
+      {% if session.logged_in %}
+    <a href="{{ url_for('logout') }}">Logout</a>
+{% else %}
+    <a class="login" href="/login">Login/Register</a>
+{% endif %}
+    </div>
+  </nav>
+
+  <br />
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flashes">
+    {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+  {% block content %} {% endblock %}
+
+  <!-- Footer -->
+  <footer class="foot py-5">
+    <div class="row">
+      <div class="col-6 col-md-2 mb-4">
+        <h5>Our Branches</h5>
+        <ul class="branch">
+          <li class="nav-item mb-2"><a href="https://www.google.com/maps?q=28.6139,77.2090" class="nav-link p-0 text-body-secondary">Kalyan East</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Kandivali</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Dombivli</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Thane</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Ambivali</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-2 mb-3 contact">
+        <h5>Contact Us</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="tel:+918689960170" class="nav-link p-0 text-body-secondary"><i class="fa-solid fa-phone"></i> +91 8689960170</a></li>
+          <li class="nav-item mb-2"><a href="tel:+917045445520" class="nav-link p-0 text-body-secondary"><i class="fa-solid fa-phone"></i> +91 7045445520</a></li>
+          <li class="nav-item mb-2"><a href="https://www.instagram.com" class="nav-link p-0 text-body-secondary"><i class="fa-brands fa-instagram"></i> techitcareer</a></li>
+          <li class="nav-item mb-2"><a href="https://www.facebook.com" class="nav-link p-0 text-body-secondary"><i class="fa-brands fa-facebook-f"></i> Tech-it</a></li>
+         
+          <pre class="gmail"><li class="nav-item mb-2"><a href="mailto:techitcareer08@gmail.com" class="nav-link p-0 text-body-secondary"><i class="fa-solid fa-envelope"></i> techitcareer08@gmail.com</a></li></pre>
+
+          
+        </ul>
+      </div>
+
+      <div class="col-md-5 offset-md-1 mb-3 inform">
+        <form>
+          <h5>If Interested, Send Us an Email</h5>
+          <p>Get detailed information about our courses.</p>
+          <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+            <input id="newsletter1" type="email" class="form-control" placeholder="Email address" />
+            <button class="btn btn-primary" type="button">Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+      <p>© 2025 Tech-IT, Inc. All rights reserved.</p>
+      
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"
+  ></script>
+</body>
+</html> 

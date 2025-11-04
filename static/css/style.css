@@ -25,7 +25,7 @@ body {
   top: 0;
   left: 0;
   z-index: 1000;
-  box-shadow: 0 4px 8px rgba(1.2, 1.2, 1.2, 1.2);
+  box-shadow: 0 4px 8px rgba(0.2 , 0.2, 0.2, 0.2);
   border-radius: 5px;
 }
 
@@ -33,7 +33,6 @@ body {
   text-decoration: none;
   color: black;
   font-weight: bolder;
-  width: 135px;
 }
 #logo{ height: 50px;
      width: 130px;
@@ -43,15 +42,13 @@ body {
 
 /* Login Button */
 .login {
-  margin-left: 88%;
   border-radius: 10px;
   border: 4px solid #007bff;
   padding: 5px;
   border-width: 3px;
   text-align: center;
-  
+  margin-left: auto;
   color: black;
-  position: absolute; 
   
 
 }
@@ -73,7 +70,7 @@ body {
 /* Input Field */
 input {
   height: 40px;
-  width: 300px;
+   max-width: 300px;
   border-radius: 10px;
   padding-left: 10px;
 }
@@ -82,8 +79,8 @@ input {
    Hero Slider Section
 =========================== */
 .hero {
-  height: 500px;
-  width: 100%;
+  max-height: 500px;
+  max-width: 100%;
   position: relative;
   overflow: hidden;
   margin-top: 40px;
@@ -174,7 +171,7 @@ input {
 }
 
 .search-box input {
-  width: 250px;
+  max-width: 250px;
   font-size: 16px;
   border: 2px solid black;
   border-radius: 10px;
@@ -224,16 +221,12 @@ input {
   margin-top: 40px;
   margin-left: 5px;
   margin-right: 5px;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
   background-color: white;
   padding: 10px;
-  height: 430px;
   width: 100%;
   border-radius: 20px;
   border: 2px solid black;
-  box-shadow: 0 4px 8px rgba(1.2, 1.2, 1.2, 1.2);
+  box-shadow: 0 4px 8px rgba(0.2 , 0.2, 0.2, 0.2);
 }
 
 .card {
@@ -321,32 +314,23 @@ input {
 .view-button:hover {
   background-color: #2980b9;
 } */
-.crt{
-  height:400px; 
-  width:100%; 
+.crt{ 
   background-color: #0c0d0e;
-  display: flex;
   /* justify-content: center; */
 }
 .crt1{
-  height:400px; 
-  width:33.3%;
   background-color: aliceblue;
 }
 .crt2{
-   height:400px; 
-  width:33.3%;
   background-color: #555;
   
   background-size: cover;
 }
-.cart2 img{
-  height:400px; 
-  width:33.3%;
-}
-.crt3{
-   height:400px; 
-   width:33.3%; 
+/* .cart2 img{
+  max-height:400px; 
+  max-width: 100%;
+} */
+.crt3{ 
   background-color: blue;
 }
 
@@ -584,3 +568,22 @@ input {
   100% { transform: rotateY(-360deg); }
 }
 
+@media (max-width: 768px) {
+  .header{
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px 5px;
+  }
+  .login {
+        margin-left: 0; 
+        width: 100%;
+    }
+  .search-box input {
+        width: 100%;
+        max-width: 90%; 
+    }
+  .header a {
+        width: 100%; 
+        text-align: left;
+    }
+}
