@@ -1,0 +1,14 @@
+tech-it-2025-dc06080d93ae.json
+# Ignore Firebase credentials and local configs
+*.json
+!package.json  # (this keeps Node package files safe if you ever use them)
+
+# Ignore virtual environment and caches
+venv/
+__pycache__/
+*.pyc
+
+# Ignore editor and OS files
+.vscode/
+.DS_Store
+Thumbs.db
