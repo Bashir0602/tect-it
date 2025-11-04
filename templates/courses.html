@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %} Courses - Tech It {% endblock %}
+
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/courses.css') }}">
+{% endblock %}
+
+
+{% block content %}
+
+
+  <section class="courses-section">
+    <h2 class="section-title">Our Courses</h2>
+
+    <div class="courses-container">
+      <div class="course-card">
+        <img src="{{url_for('static',filename='images/web.jpg')}}" alt="Web Development">
+        <h3>Web Development</h3>
+        <p>Learn to design and develop modern, responsive websites using HTML, CSS, JavaScript, React, and more.</p>
+        <button>Enroll Now</button>
+      </div>
+
+      <div class="course-card">
+        <img src="{{url_for('static',filename='images/science.jpg')}}" alt="Python Programming">
+        <h3>Data Science</h3>
+        <p>From beginner to expert — build a strong foundation and step into the world of AI, Machine Learning, and Big Data.</p>
+        <button>Enroll Now</button>
+      </div>
+
+      <div class="course-card">
+        <img src="{{url_for('static',filename='images/data.jpg')}}" alt="Data Science">
+        <h3>Data Analyst</h3>
+        <p>This course will help you become job-ready for roles like Data Analyst, Business Analyst, or Reporting Specialist.</p>
+        <button>Enroll Now</button>
+      </div>
+    </div>
+  </section>
+  <section class="courses-section">
+
+    <div class="courses-container">
+      <div class="course-card">
+        <img src="{{url_for('static',filename='images/market.jpg')}}" alt="Web Development">
+        <h3>Digital Marketing</h3>
+        <p>Learn the latest digital marketing strategies including SEO, SEM, social media marketing, email campaigns, and content creation.</p>
+        <button>Enroll Now</button>
+      </div>
+
+      <div class="course-card">
+        <img src="{{url_for('static',filename='images/cyber.jpg')}}" alt="Cyber Security">
+        <h3>Cyber Security</h3>
+        <p>This course prepares you for career roles like Security Analyst, Ethical Hacker, or Network Defender.</p>
+        <button>Enroll Now</button>
+      </div>
+
+      <div class="course-card">
+        <img src="{{url_for('static',filename='images/software.jpg')}}" alt="Data Science">
+        <h3>Software Testing</h3>
+        <p>Learn the fundamentals of manual and automated software testing to ensure high-quality software delivery.</p>
+        <button>Enroll Now</button>
+      </div>
+    </div>
+  </section>
+  <section class="courses-section">
+
+    <div class="courses-container">
+      <div class="course-card">
+        <img src="{{url_for('static',filename='images/fullstack.png')}}" alt="fullStack Development">
+        <h3>Full Stack Development</h3>
+        <p>Learn to design and develop dynamic, responsive websites and applications using technologies like HTML, CSS, JavaScript, React, Node.js, Express, and MongoDB.</p>
+        <button>Enroll Now</button>
+      </div>
+
+      <div class="course-card">
+        <img src="{{url_for('static',filename='images/Python.jpg')}}" alt="Python Programming">
+        <h3>Python Programming</h3>
+        <p>This course helps you build a strong programming foundation for IT careers and advanced technologies.</p>
+        <button>Enroll Now</button>
+      </div>
+
+      <div class="course-card">
+        <img src="{{url_for('static',filename='images/excel.png')}}" alt="Data Science">
+        <h3>Excel</h3>
+        <p>Learn to create, format, and manage spreadsheets efficiently using Excel formulas, functions, and tables.</p>
+        <button>Enroll Now</button>
+      </div>
+    </div>
+  </section>
+  <section class="courses-section">
+
+    <div class="courses-container">
+      <div class="course-card">
+        <img src="#" alt="Web Development">
+        <h3>Master C Programming from Scratch</h3>
+        <p>This course prepares you for software development, embedded systems, and competitive programming.</p>
+        <button>Enroll Now</button>
+      </div>
+
+      <div class="course-card">
+        <img src="{{url_for('static',filename='images/c++.jpg')}}" alt="C++ Programming">
+        <h3>Master C++ Programming from Basics to Advanced</h3>
+        <p>This course prepares you for software development, game development, and competitive programming.</p>
+        <button>Enroll Now</button>
+      </div>
+
+      <div class="course-card">
+        <img src="{{url_for('static',filename='images/java.jpg')}}" alt="Java Programming">
+        <h3>Build Robust Applications with Java</h3>
+        <p>Perfect for beginners and aspiring programmers  develop strong coding skills for a successful IT career.</p>
+        <button>Enroll Now</button>
+      </div>
+    </div>
+  </section>
+{% endblock %}

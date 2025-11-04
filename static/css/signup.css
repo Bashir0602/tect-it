@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -27,7 +27,6 @@ body {
 .login-box:hover {
   transform: translateY(-4px);
 }
-
 /* --- Logo --- */
 .logo {
   width: 120px;
@@ -73,25 +72,29 @@ h2 {
 }
 
 .input-box input:focus {
-   background: rgba(255, 255, 255, 0.25); */
-   box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); 
+  background: rgba(255, 255, 255, 0.25);
 }
 
 /* --- Forgot Password --- */
-.forgot {
-  display: block;
-  text-align: left;
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
   color: #b0c4de;
-  font-size: 13px;
-  margin: 5px 0 15px;
-  text-decoration: none;
-  padding-left: 23px;
-}
-.forgot:hover {
-  text-decoration: underline;
 }
 
-/* --- Sign In Button --- */
+.remember-me input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  margin-left: 15px;
+}
+
+.remember-me label {
+  user-select: none;
+}
+
 .btn {
   width: 100%;
   padding: 12px;
@@ -119,7 +122,6 @@ h2 {
   color: #00c6ff;
   text-decoration: none;
 }
-
 .signup-text a:hover {
   text-decoration: underline;
 }
