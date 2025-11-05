@@ -3,38 +3,40 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from flask_bcrypt import Bcrypt
 from functools import wraps
 
-# --- Firebase and Database Imports (The Fix is here) ---
-import firebase_admin 
-from firebase_admin import credentials, initialize_app, firestore
+# --- Firebase and Firestore Imports ---
+import firebase_admin
+from firebase_admin import credentials, firestore
 
 # --- 1. CONFIGURATION AND INITIALIZATION ---
-FIREBASE_CONFIG = os.environ.get('__firebase_config', '{}')
-APP_ID = os.environ.get('__app_id', 'default-app-id')
-
 app = Flask(__name__)
 
-# CRITICAL: Secret key needed for sessions (cookies) and flash messages
-app.secret_key = 'YOUR_SECURE_RANDOM_KEY_987654123' 
+# Secret key for sessions and flash messages
+app.secret_key = 'YOUR_SECURE_RANDOM_KEY_987654123'
 
 # Initialize Bcrypt for password hashing
 bcrypt = Bcrypt(app)
 
-# Initialize Firebase Admin SDK and Firestore Client (ROBUST SETUP)
+# --- 2. FIREBASE INITIALIZATION ---
 try:
-    if not firebase_admin._apps:
-        # initialize_app() looks for credentials automatically
-        initialize_app()
-    db = firestore.client()
-except Exception as e:
-    # This ensures the app doesn't crash if Firebase credentials are not found
-    print(f"ERROR: Firebase/Firestore initialization failed. Authentication will be non-functional: {e}")
-    db = None 
+    # Path to service account JSON key
+    json_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tech-it-2025-dc06080d93ae.json")
 
-# Define the secure path for the user collection
+    if not firebase_admin._apps:
+        cred = credentials.Certificate(json_path)
+        firebase_admin.initialize_app(cred)
+
+    db = firestore.client()
+    print("✅ Firestore connected successfully.")
+
+except Exception as e:
+    print(f"❌ ERROR: Firebase/Firestore initialization failed: {e}")
+    db = None
+
+# Firestore collection name
 USERS_COLLECTION = "users"
 
-# --- 2. AUTHENTICATION DECORATOR ---
 
+# --- 3. AUTH DECORATOR (FOR PROTECTED ROUTES) ---
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -45,8 +47,7 @@ def login_required(f):
     return decorated_function
 
 
-# --- 3. STANDARD ROUTES ---
-
+# --- 4. STANDARD ROUTES ---
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -55,9 +56,8 @@ def index():
 def about():
     return render_template('about.html')
 
-# Protected routes
 @app.route('/courses')
-@login_required 
+@login_required
 def courses():
     return render_template('courses.html')
 
@@ -68,29 +68,27 @@ def jobs():
 
 @app.route('/search_results', methods=['GET', 'POST'])
 def search_results():
-    # Placeholder to resolve the url_for('search_results') error in base.html
     return redirect(url_for('index'))
 
-# --- 4. AUTHENTICATION ROUTES ---
 
+# --- 5. LOGIN ROUTE ---
 @app.route('/login', methods=['GET', 'POST'])
 def handle_login():
     if request.method == 'POST':
-        # Always use lowercase field names to match your HTML form
         email = request.form.get('email')
         password = request.form.get('password')
 
-        # Safety check: make sure database is connected
+        # Safety check
         if not db:
             flash("System Error: Database connection failed.", 'error')
             return render_template('login.html')
 
-        # 1️⃣ Try to find user document by email (works even if using .add())
+        # 1️⃣ Try to find user by email
         user_doc = db.collection(USERS_COLLECTION).document(email).get()
         user_data = None
 
         if not user_doc.exists:
-            # Fallback: user documents might not use email as ID
+            # Fallback search (in case email isn’t document ID)
             users_ref = db.collection(USERS_COLLECTION)
             query = users_ref.where("email", "==", email).limit(1).stream()
             for doc in query:
@@ -99,7 +97,7 @@ def handle_login():
         else:
             user_data = user_doc.to_dict()
 
-        # 2️⃣ If user not found, show error
+        # 2️⃣ Check user existence
         if not user_data:
             flash("Invalid password or Email.", 'error')
             return render_template('login.html')
@@ -107,26 +105,21 @@ def handle_login():
         # 3️⃣ Verify password
         stored_hash = user_data.get('password')
         if stored_hash and bcrypt.check_password_hash(stored_hash, password):
-            # ✅ Success: set session & redirect
             session['logged_in'] = True
             session['user_email'] = email
             session['user_name'] = user_data.get('first_name', 'User')
             flash(f"Welcome back, {session['user_name']}!", 'success')
             return redirect(url_for('index'))
         else:
-            # ❌ Wrong password
             flash("Invalid password or Email.", 'error')
-            return render_template('login.html')
 
-    # For GET requests
     return render_template('login.html')
 
 
+# --- 6. SIGNUP ROUTE ---
 @app.route('/signup', methods=['GET', 'POST'])
 def handle_signup():
     if request.method == 'POST':
-        
-        # 1. Capture all form data
         first_name = request.form.get('First_name')
         last_name = request.form.get('Last_name')
         phone_number = request.form.get('Number')
@@ -134,50 +127,48 @@ def handle_signup():
         password = request.form.get('password')
         confirm_password = request.form.get('confirm_password')
 
-        # Check if DB is functional
+        # Check DB connection
         if not db:
             flash("System Error: Database connection failed.", 'error')
             return render_template('signup.html')
-        
-        # 2. Validation
+
+        # Validate passwords
         if password != confirm_password:
             flash("Passwords do not match!", 'error')
             return render_template('signup.html')
 
-        # 3. Check if user exists
+        # Check if user exists
         if db.collection(USERS_COLLECTION).document(email).get().exists:
             flash("Email already registered. Please log in.", 'error')
             return render_template('signup.html')
 
-        # 4. Securely Hash the Password
+        # Hash password securely
         hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
 
-        # 5. Save ALL Data to Firestore
+        # Store data in Firestore
         user_data = {
             'first_name': first_name,
             'last_name': last_name,
             'phone_number': phone_number,
             'email': email,
-            'password': hashed_password, # Stored Hash
+            'password': hashed_password,
         }
         db.collection(USERS_COLLECTION).document(email).set(user_data)
-        
-        # 6. Success and Redirect
+
         flash("Registration successful! Please log in.", 'success')
         return redirect(url_for('handle_login'))
 
-    # If GET request, show the form
     return render_template('signup.html')
 
+
+# --- 7. LOGOUT ROUTE ---
 @app.route('/logout')
 def logout():
-    # Clear session data
-    session.pop('logged_in', None)
-    session.pop('user_email', None)
-    session.pop('user_name', None)
+    session.clear()
     flash("You have been logged out.", 'success')
     return redirect(url_for('index'))
 
 
+# --- 8. RUN APP ---
 if __name__ == '__main__':
     app.run(debug=True)
