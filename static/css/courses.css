@@ -293,136 +293,26 @@ body {
   padding-top:0;
 }
 
-
+.container{
+  display: flex;
+  margin-right:1rem ;
+  justify-content: space-evenly;
+} 
 
 /* ===========================
    Header Section
 =========================== */
-.header {
-  height: 65px;
-  width: 100%;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  gap: 30px;
-   position: relative;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 8px rgba(1.2, 1.2, 1.2, 1.2);
-  border-radius: 5px;
-}
-
-
-.header a {
- 
-  display: inline-block;          
-  font-size: 18px;                
-  transition: transform 0.2s ease, color 0.2s ease;
-  color: #000;
-  text-decoration: none;
-  font-weight: bolder ;
-}
-.header a:hover{
-  
-  transform: scale(1.05);
-}
-.header a.active,
-.cr.active {
-  color: #007bff !important;    
-  transform: none;               
-}
-#logo{ 
-     height: 50px;
-     width: 130px;
-     border-radius:15px;
-     margin-left: 10px;
-}.cr {
-  
-  color: #000;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 20px;
-  padding: 0  5px;
-  transition: color 0.2s;
-} 
-
-.cr:hover,
-.cr.active {
-  color: #007bff;
-  border-bottom: 2px solid #007bff;
-}
-
-#home:hover,
-#All:hover,
-#jobs:hover,
-#about:hover {
-  color: #007bff;
-  
-   transform: scale(1.05);
-  
-}
-/* Login Button */
-.login {
- 
-  position: absolute;
-  right: 20px;
-  border: 3px solid #007bff;
-  border-radius: 10px;
-  padding: 5px 12px;
-  text-align: center;
-  transition: all 0.3s ease;
-  
-
-}
-
-.login:hover {
-
-  background-color: #007bff; 
-  color: white;
-}
-/* ===============================
-   Search Box
-=============================== */
-.search-box {
-  position: relative;
-  display: inline-block;
-}
-
-.search-box input {
-  height: 38px;
-  width: 230px;
-  border-radius: 10px;
-  border: 2px solid #000;
-  padding-left: 10px;
-  font-size: 15px;
-}
-
-.search-box i {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: black;
-  cursor: pointer;
-}
-
-.btn-icon {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
+/* 
 /* ===============================
    Hamburger Menu
 =============================== */
-.hamburger {
+/* .hamburger {
   display: none;
   font-size: 26px;
   cursor: pointer;
   color: #000;
   z-index: 2000;
-}
+} */
 
 /* ===============================
    Courses Section
@@ -613,12 +503,10 @@ body {
 
 /* 📱 Mobile & Tablet */
 @media (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
+
 
   /* Hide nav links by default */
-  .nav-links {
+  /* .nav-links {
     position: absolute;
     top: 65px;
     left: 0;
@@ -633,16 +521,16 @@ body {
     opacity: 0;
     transform: translateY(-20px);
     transition: all 0.3s ease-in-out;
-  }
+  } */
 
   /* When active (menu opened) */
-  .nav-links.show {
+  /* .nav-links.show {
     display: flex;
     opacity: 1;
     transform: translateY(0);
-  }
+  } */
 
-  .nav-links a {
+  /* .nav-links a {
     font-size: 16px;
     width: 100%;
     padding: 6px 0;
@@ -650,12 +538,12 @@ body {
 
   .search-box input {
     width: 100%;
-  }
+  } */
 
-  .login {
+  /* .login {
     width: 100%;
     text-align: center;
-  }
+  } */
 
   .courses-section {
     padding-top: 120px;
@@ -679,9 +567,9 @@ body {
 
 /* 📱 Small Devices */
 @media (max-width: 480px) {
-  #logo {
+  /* #logo {
     width: 110px;
-  }
+  } */
 
   .section-title {
     font-size: 1.6em;

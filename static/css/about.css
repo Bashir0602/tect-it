@@ -5,7 +5,7 @@
 }
 
 
- .header {
+ /* .header {
   
   height: 65px;
   width: 100%;
@@ -44,10 +44,10 @@
      width: 130px;
      border-radius:15px;
      margin-left: 10px;
-}
+} */
 
 /* Active and Hovered Links */
- .ab {
+ /* .ab {
   
   color: #000;
   font-weight: 600;
@@ -71,9 +71,9 @@
   
    transform: scale(1.05);
   
-}
+} */
 /* Login Button */
-.login {
+/* .login {
  
   position: absolute;
   right: 20px;
@@ -135,20 +135,21 @@ input{
       transform: translateY(-50%);
       color: black;
       cursor: pointer;
-    } 
+    } */
 
 .start{
     height:200px;
     width:200px;
 }
 .py-3{
-    margin-top: 45px;
+    margin-top: 20px;
+    margin-left:-6rem;
 }
 .anoop{
     background: none;
 }
 
-.foot{
+/* .foot{
   margin-bottom:-50px;
   padding-left: 30px;
   background-color: #00bcd4;
@@ -162,4 +163,4 @@ input{
   font-size: 15px;
   font-family: inherit;
   
-}
+}  */

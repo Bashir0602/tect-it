@@ -3,7 +3,7 @@
   margin: 0%;
 }
 
- .header {
+ /* .header {
   
   height: 65px;
   width: 100%;
@@ -42,10 +42,10 @@
      width: 130px;
      border-radius:15px;
      margin-left: 10px;
-}
+} */
 
 /* Active and Hovered Links */
- .ab {
+ /* .ab {
   
   color: #000;
   font-weight: 600;
@@ -71,7 +71,7 @@
   
 }
 /* Login Button */
-.login {
+/* .login {
  
   position: absolute;
   right: 20px;
@@ -82,9 +82,9 @@
   transition: all 0.3s ease;
   
 
-}
+} */
 
-.login:hover {
+/* .login:hover {
 
   background-color: #007bff; 
   color: white;
@@ -111,9 +111,9 @@ input{
       text-align:center ;
       margin-top: 50px;
       
-    }
+    } */
 
-    .search-box {
+    /* .search-box {
       position: relative;
       display: inline-block;
 
@@ -143,9 +143,9 @@ input{
 }
 .foot h5{
   padding-left:10px;
-}
+} */
 
-.social-card-header{
+ .social-card-header{
     position: relative;
     display: -ms-flexbox;
     display: flex;
@@ -159,7 +159,7 @@ input{
     font-size: 32px;
     color:#FFF;
 }
-.bg-facebook {
+/* .bg-facebook {
     background-color:#3b5998;
 }
 .text-facebook {
@@ -189,4 +189,4 @@ input{
 }
 .container{
     margin-top:70px;
-}
+}  */ */
