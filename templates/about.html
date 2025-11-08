@@ -4,55 +4,64 @@
 
 {% block extra_head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock %}
-
 
 {% block content %}
 
-
-    <!-- middle section -->
-     <!-- About 4 - Bootstrap Brain Component -->
-<section class="py-3 py-md-5 py-xl-8">
+<!-- ===============================
+     About Section
+=============================== -->
+<section class="about-page py-3 py-md-5 py-xl-8">
   <div class="container">
-    <div class="row">
-      <div class="col-12 col-md-10 col-lg-8">
-        <h3 class="fs-5 mb-2 text-secondary text-uppercase">What is tech-it?</h3>
-        <p>TechIt Career is a leading platform dedicated to empowering individuals with the most in-demand digital and technical skills. We offer career-focused training in Data Analytics, Digital Marketing, Excel, MSCIT, MSCERT, Cyber Security, Full Stack Development, Cloud Software, and Data Science.
-.</p>
-<p>Our mission is to bridge the gap between learning and real-world application through expert guidance, hands-on projects, and industry-relevant content. At TechIt Career, we believe in transforming students into skilled professionals ready to excel in the fast-evolving tech world.</p>
-        <button type="button" class="btn btn-lg btn-primary mb-3 mb-md-4 mb-xl-5">Connect Now</button>
+    <div class="row justify-content-center text-center mb-5">
+      <div class="col-lg-8">
+        <h3 class="fs-5 mb-2 text-secondary text-uppercase">What is Tech-It?</h3>
+        <p class="lead">
+          <strong>TechIt Career</strong> is a leading platform dedicated to empowering individuals with the most in-demand digital and technical skills. 
+          We offer career-focused training in <strong>Data Analytics, Digital Marketing, Excel, MSCIT, MSCERT, Cyber Security, Full Stack Development, Cloud Software, and Data Science.</strong>
+        </p>
+        <p>
+          Our mission is to bridge the gap between learning and real-world application through expert guidance, hands-on projects, and industry-relevant content. 
+          At TechIt Career, we believe in transforming students into skilled professionals ready to excel in the fast-evolving tech world.
+        </p>
+        <button type="button" class="btn btn-lg btn-primary mt-3">Connect Now</button>
       </div>
     </div>
-  </div>
 
-  <div class="container">
-    <div class="row gy-3 gy-md-4 gy-lg-0">
-<div class="col-12 col-lg-6">
-        <div class="card bg-light p-3 m-0">
-          <div class="row gy-3 gy-md-0 align-items-md-center">
-            <div class="col-md-5 anoop">
-              <img src="{{url_for('static', filename='images/anop.jpg')}}" class=start alt="Why Choose Us?">
+    <!-- Founder and Team Section -->
+    <div class="row gy-4">
+      <!-- Founder Card -->
+      <div class="col-12 col-lg-6">
+        <div class="card bg-light p-3 border-0 shadow-sm">
+          <div class="row align-items-center g-3">
+            <div class="col-md-5">
+              <img src="{{ url_for('static', filename='images/anop.jpg') }}" class="img-fluid rounded-start" alt="Owner of Tech-It">
             </div>
             <div class="col-md-7">
-              <div class="card-body p-0">
-                <h2 class="card-title h4 mb-3">Owner of Tech-it</h2>
-                <p class="card-text lead">With years of experience and deep industry knowledge, we have a proven track record of success and are pushing ourselves to stay ahead of the curve.</p>
+              <div class="card-body">
+                <h4 class="card-title mb-3">Founder of Tech-It</h4>
+                <p class="card-text text-muted">
+                  With years of experience and deep industry knowledge, our founder has built Tech-It into a trusted institute committed to delivering excellence and real-world skills.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Visionary Team Card -->
       <div class="col-12 col-lg-6">
-        <div class="card bg-light p-3 m-0">
-          <div class="row gy-3 gy-md-0 align-items-md-center">
+        <div class="card bg-light p-3 border-0 shadow-sm">
+          <div class="row align-items-center g-3">
             <div class="col-md-5">
-              <img src="./assets/img/about-img-1.jpg" class="img-fluid rounded-start" alt="Visionary Team">
+              <img src="{{ url_for('static', filename='images/team.jpg') }}" class="img-fluid rounded-start" alt="Visionary Team">
             </div>
             <div class="col-md-7">
-              <div class="card-body p-0">
-                <h2 class="card-title h4 mb-3">Visionary Team</h2>
-                <p class="card-text lead">With a team of visionary engineers, developers, and creative minds, we embark on a journey to transform complex challenges into ingenious technological solutions.</p>
+              <div class="card-body">
+                <h4 class="card-title mb-3">Our Visionary Team</h4>
+                <p class="card-text text-muted">
+                  Our team of engineers, developers, and creative thinkers work together to turn innovative ideas into impactful technological solutions that shape tomorrow’s industry leaders.
+                </p>
               </div>
             </div>
           </div>

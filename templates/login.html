@@ -1,4 +1,5 @@
 {% extends "auth_base.html" %}
+{% block flash_messages %}{% endblock %}
 
 {% block title %} Login - Tech It {% endblock %}
 
@@ -7,31 +8,56 @@
 {% endblock %}
 
 {% block content %}
-
+ <div class="login-container">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }} text-center mb-3" role="alert">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 <form action="{{ url_for('handle_login') }}" method="POST">
-
-  <div class="login-container">
-    <div class="login-box">
+    <div class="login-box shadow-lg">
       <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Tech IT Logo" class="logo">
 
-      <h2>Welcome To Tech IT 👋</h2>
+      <h2>Welcome to Tech IT 👋</h2>
+      <p class="text-muted mb-4">Please sign in to continue</p>
 
+      <!-- Email Field -->
       <div class="input-box">
         <i class="fa-solid fa-user"></i>
-        <input type="text" placeholder="Username" required name="email">
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          placeholder="Email" 
+          required 
+          autocomplete="username">
       </div>
 
+      <!-- Password Field -->
       <div class="input-box">
         <i class="fa-solid fa-lock"></i>
-        <input type="password" placeholder="Password" required minlength="8" name="password">
+        <input 
+          type="password" 
+          id="password" 
+          name="password" 
+          placeholder="Password" 
+          required 
+          minlength="8" 
+          autocomplete="current-password">
       </div>
 
       <a href="#" class="forgot">Forgot Password?</a>
 
-      <button class="btn">Sign In</button>
+      <button class="btn" type="submit">Sign In</button>
 
-      <p class="signup-text">Don't have an account? <a href="{{ url_for('handle_signup') }}">Sign Up</a></p>
+      <p class="signup-text">Don't have an account? 
+        <a href="{{ url_for('handle_signup') }}">Sign Up</a>
+      </p>
     </div>
-  </div>
 </form>
+</div>
 {% endblock %}

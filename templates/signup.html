@@ -1,60 +1,100 @@
 {% extends "auth_base.html" %}
-{% block title %} Signup - Tech It {% endblock %}
+
+{% block title %} Signup - Tech IT {% endblock %}
 
 {% block extra_head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
 {% endblock %}
 
 {% block content %}
+<div class="signup-container">
+  <div class="signup-box shadow-lg">
+    <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Tech IT Logo" class="logo" />
 
-        <div class="login-container">
-          <div class="login-box">
-            <img src="{{ url_for('static',filename='images/logo.jpg')}}" alt="Tech IT Logo" class="logo" />
+    <h2>Join Tech IT 👋</h2>
+    <p class="text-muted mb-4">Create your account and start your journey</p>
 
-        <form action="{{ url_for('handle_signup') }}" method="POST"
-            <div class="input-box">
-              <i class="fa-solid fa-user"></i>
-              <input type="text" placeholder="First Name" required name="First_name" value="{{ request.form.get('First_name')or ''}}"/>
-            </div>
+    <form action="{{ url_for('handle_signup') }}" method="POST">
+      <!-- First Name -->
+      <div class="input-box">
+        <i class="fa-solid fa-user"></i>
+        <input 
+          type="text" 
+          name="first_name" 
+          placeholder="First Name" 
+          required 
+          autocomplete="given-name"
+          value="{{ request.form.get('first_name') or '' }}">
+      </div>
 
-            <div class="input-box">
-              <i class="fa-solid fa-user"></i>
-              <input type="text" placeholder="Last Name" required name="Last_name" value="{{ request.form.get('Last_name')or ''}}"/>
-            </div>
+      <!-- Last Name -->
+      <div class="input-box">
+        <i class="fa-solid fa-user"></i>
+        <input 
+          type="text" 
+          name="last_name" 
+          placeholder="Last Name" 
+          required 
+          autocomplete="family-name"
+          value="{{ request.form.get('last_name') or '' }}">
+      </div>
 
-            <div class="input-box">
-              <i class="fa-solid fa-user"></i>
-              <input type="text" placeholder="Phone No" 
-              pattern="[6-9]{1}[0-9]{9}" maxlength="10" required  name="Number" value="{{ request.form.get('Number')or ''}}"/>
-            </div>
+      <!-- Phone Number -->
+      <div class="input-box">
+        <i class="fa-solid fa-phone"></i>
+        <input 
+          type="tel" 
+          name="number" 
+          placeholder="Phone Number" 
+          pattern="[6-9]{1}[0-9]{9}" 
+          maxlength="10" 
+          required 
+          autocomplete="tel"
+          value="{{ request.form.get('number') or '' }}">
+      </div>
 
+      <!-- Email -->
+      <div class="input-box">
+        <i class="fa-solid fa-envelope"></i>
+        <input 
+          type="email" 
+          name="email" 
+          placeholder="Email Address" 
+          required 
+          autocomplete="email"
+          value="{{ request.form.get('email') or '' }}">
+      </div>
 
-            <div class="input-box">
-              <i class="fa-solid fa-user"></i>
-              <input type="text" placeholder="E-mail" required name="Email" value="{{ request.form.get('Email')or ''}}" />
-            </div>
+      <!-- Password -->
+      <div class="input-box">
+        <i class="fa-solid fa-lock"></i>
+        <input 
+          type="password" 
+          name="password" 
+          placeholder="Create Password" 
+          required 
+          minlength="8"
+          autocomplete="new-password">
+      </div>
 
-            <div class="input-box">
-              <i class="fa-solid fa-lock"></i>
-              <input type="password" placeholder="Create Password" required name="password" />
-            </div>
+      <!-- Confirm Password -->
+      <div class="input-box">
+        <i class="fa-solid fa-lock"></i>
+        <input 
+          type="password" 
+          name="confirm_password" 
+          placeholder="Confirm Password" 
+          required 
+          minlength="8"
+          autocomplete="new-password">
+      </div>
 
-             <div class="input-box">
-              <i class="fa-solid fa-lock"></i>
-              <input type="password" placeholder="Confirm Password" required name="confirm_password"/>
-            </div>
+      <button type="submit" class="btn">Sign Up</button>
 
-          <div class="remember-me">
-            <input type="checkbox" id="remember">
-            <label for="remember">remember-me</label>
-          </div>
-
-            <button class="btn">Sign-Up</button>
-
-            <p class="signup-text">
-              Already have an account  <a href="/login">Login</a>
-            </p>
-          </div>
-        </div>
+      <p class="signup-text mt-3">
+        Already have an account? <a href="{{ url_for('handle_login') }}">Login</a>
+      </p>
     </form>
+  </div>
+</div>
 {% endblock %}
