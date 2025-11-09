@@ -1,166 +1,164 @@
-* {
-   padding: 0%;
-  margin: 0%;
-  box-sizing:border-box;  
+/* ===============================
+   🧭 TechIT About Page Styling
+=============================== */
+:root{
+  --techit-primary: #007bff;   /* primary blue (headings, accents) */
+  --techit-accent:  #00bcd4;   /* cyan accent (buttons etc) */
+  --techit-accent-dark: #0097a7; /* hover / darker accent */
+  --page-bg:         #ffffff;  /* main card / page bg */
+  --page-shell:      #f8f9fa;  /* page background (light grey) */
+  --text-default:    #222222;
+  --text-muted:      #666666;
 }
 
-
- /* .header {
-  
-  height: 65px;
-  width: 100%;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 8px rgba(1.2, 1.2, 1.2, 1.2);
-  border-radius: 5px;
+.about-page {
+  padding-top: 100px; /* Space for fixed navbar */
+  padding-bottom: 60px;
+  background-color: #f9f9fb;
+  font-family: 'Poppins', sans-serif;
+  color: #222;
 }
 
-
-.header a {
- 
-  display: inline-block;          
-  font-size: 18px;                
-  transition: transform 0.2s ease, color 0.2s ease;
-  color: #000;
-  text-decoration: none;
-  font-weight: bolder;
-}
-.header a:hover{
-  
-  transform: scale(1.05);
-}
-.header a.active,
-.ab.active {
-  color: #007bff !important;    
-  transform: none;               
-}
-#logo{ height: 50px;
-     width: 130px;
-     border-radius:15px;
-     margin-left: 10px;
-} */
-
-/* Active and Hovered Links */
- /* .ab {
-  
-  color: #000;
+/* ===============================
+   Headings & Text
+=============================== */
+.about-page h2,
+.about-page h3 {
   font-weight: 600;
-  text-decoration: none;
-  font-size: 20px;
-  padding: 0  5px;
-  transition: color 0.2s;
-} 
-
-.ab:hover,
-.ab.active {
   color: #007bff;
-  border-bottom: 2px solid #007bff;
-}
-
-#home:hover,
-#All:hover,
-#jobs:hover,
-#about:hover {
-  color: #007bff;
-  
-   transform: scale(1.05);
-  
-} */
-/* Login Button */
-/* .login {
- 
-  position: absolute;
-  right: 20px;
-  border: 3px solid #007bff;
-  border-radius: 10px;
-  padding: 5px 12px;
   text-align: center;
-  transition: all 0.3s ease;
-  
-
+  margin-bottom: 25px;
 }
 
-.login:hover {
-
-  background-color: #007bff; 
-  color: white;
+.about-page p {
+  color: #555;
+  line-height: 1.8;
+  font-size: 1rem;
+  max-width: 900px;
+  margin: 0 auto 25px;
+  text-align: center;
 }
-.btn-icon{
-  background: transparent;
+
+/* ===============================
+   Card Styling
+=============================== */
+.card {
   border: none;
-  padding: 0;
-  cursor: pointer;
-  outline: none;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
-input{
-  height: 40px;
-  width:300px;
-  border-radius: 10px;
-  padding-left: 10px;
-
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
 }
 
-.search-container {
-      text-align:center ;
-      margin-top: 50px;
-      
-    }
-
-    .search-box {
-      position: relative;
-      display: inline-block;
-
-      
-    }
-
-    .search-box input {
-      width: 250px;
-      font-size: 16px;
-      border: 2px solid black;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
-
-    .search-box i {
-      position: absolute;
-      right: 10px;
-      top: 60%;
-      transform: translateY(-50%);
-      color: black;
-      cursor: pointer;
-    } */
-
-.start{
-    height:200px;
-    width:200px;
-}
-.py-3{
-    margin-top: 20px;
-    margin-left:-6rem;
-}
-.anoop{
-    background: none;
+.card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 15px 15px 0 0;
 }
 
-/* .foot{
-  margin-bottom:-50px;
-  padding-left: 30px;
-  background-color: #00bcd4;
-  
+.card-body {
+  padding: 1.5rem;
+  text-align: left;
 }
-.foot h5{
-  padding-left:10px;
-  
+
+.card-body h5 {
+  color: #007bff;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
-.gmail{
-  font-size: 15px;
-  font-family: inherit;
-  
-}  */
+
+.card-body p {
+  color: #555;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* ===============================
+   Buttons
+=============================== */
+/* .btn-primary {
+  background-color: #030fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 600;
+  color: #fff;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #040fe6;
+  transform: translateY(-2px);
+} */
+
+/* ===============================
+   Section Highlights / Info Box
+=============================== */
+.about-highlight {
+  background: linear-gradient(135deg, #00bcd4, #007bff);
+  color: #fff;
+  padding: 40px 20px;
+  border-radius: 15px;
+  text-align: center;
+  margin: 40px auto;
+  max-width: 900px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.about-highlight h4 {
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.about-highlight p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #eef7ff;
+}
+
+/* ===============================
+   Responsive Fixes
+=============================== */
+@media (max-width: 992px) {
+  .about-page {
+    padding-top: 80px;
+    text-align: center;
+  }
+
+  .card img {
+    height: 200px;
+  }
+
+  .about-highlight {
+    margin: 30px 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-page h2,
+  .about-page h3 {
+    font-size: 1.4rem;
+  }
+
+  .about-page p {
+    font-size: 0.9rem;
+    padding: 0 10px;
+  }
+
+  .btn-primary {
+    width: 90%;
+    font-size: 14px;
+  }
+
+  .card-body {
+    text-align: center;
+  }
+}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %} Home - Tech It {% endblock %}
 {% block extra_head %}
-
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock %}
 {% block content %}
 
@@ -67,19 +67,39 @@
     </div>
   </div>
 </section>
+<div class="cert-slider">
+    <input type="radio" name="cert-radio" id="cert1" checked>
+    <input type="radio" name="cert-radio" id="cert2">
+    <input type="radio" name="cert-radio" id="cert3">
 
-<div class="crt row ">
-  <div class="crt1 col-12 col-md-4">
-     <img src="" class="img-fluid" alt="Slide 1"/>
-  </div>
-  <div class="crt2 col-12 col-md-4">
-     <img src="{{url_for('static',filename='images/power.jpg')}}" class="img-fluid" alt="Slide 2"/>
-  </div>
-  <div class="crt3 col-12 col-md-4">
-     <img src="" class="img-fluid" alt="Slide 3"/>
-  </div>
+    <div class="cert-slides">
+        <div class="cert-sli">
+            <img src="{{url_for('static',filename='images/cloud.jpg')}}" alt="Certificate 1">
+        </div>
+        <div class="cert-sli">
+            <img src="{{url_for('static',filename='images/cloud.jpg')}}" alt="Certificate 2">
+        </div>
+        <div class="cert-sli">
+            <img src="{{url_for('static',filename='images/cloud.jpg')}}" alt="Certificate 3">
+        </div>
+    </div>
+
+    <div class="cert-navigation">
+        <label for="cert1" class="nav-btn" id="btn1"></label>
+        <label for="cert2" class="nav-btn" id="btn2"></label>
+        <label for="cert3" class="nav-btn" id="btn3"></label>
+    </div>
+
+    <div class="cert-manual-nav">
+        <label for="cert3" class="prev-btn prev-cert1">❮</label>
+        <label for="cert1" class="prev-btn prev-cert2">❮</label>
+        <label for="cert2" class="prev-btn prev-cert3">❮</label>
+
+        <label for="cert2" class="next-btn next-cert1">❯</label>
+        <label for="cert3" class="next-btn next-cert2">❯</label>
+        <label for="cert1" class="next-btn next-cert3">❯</label>
+    </div>
 </div>
-
   <!-- Placement Section -->
 <div class="logo-scroller-container">
 

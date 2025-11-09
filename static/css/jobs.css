@@ -1,192 +1,137 @@
-* {
-  padding: 0%;
-  margin: 0%;
+/* ===============================
+   💼 TechIT Jobs Page Styling
+=============================== */
+
+/* Base */
+body {
+  background-color: #f8f9fa;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+  color: #222;
 }
 
- /* .header {
-  
-  height: 65px;
-  width: 100%;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 8px rgba(1.2, 1.2, 1.2, 1.2);
-  border-radius: 5px;
+/* ===============================
+   Section Layout
+=============================== */
+.jobs-page {
+  padding-top: 100px; /* space below fixed navbar */
+  padding-bottom: 60px;
 }
 
-
-.header a {
- 
-  display: inline-block;          
-  font-size: 18px;                
-  transition: transform 0.2s ease, color 0.2s ease;
-  color: #000;
-  text-decoration: none;
-  font-weight: bolder;
-}
-.header a:hover{
-  
-  transform: scale(1.05);
-}
-.header a.active,
-.ab.active {
-  color: #007bff !important;    
-  transform: none;               
-}
-#logo{ height: 50px;
-     width: 130px;
-     border-radius:15px;
-     margin-left: 10px;
-} */
-
-/* Active and Hovered Links */
- /* .ab {
-  
-  color: #000;
+.section-heading {
   font-weight: 600;
-  text-decoration: none;
-  font-size: 20px;
-  padding: 0  5px;
-  transition: color 0.2s;
-} 
-
-.ab:hover,
-.ab.active {
+  font-size: 2rem;
   color: #007bff;
-  border-bottom: 2px solid #007bff;
-}
-
-#home:hover,
-#All:hover,
-#jobs:hover,
-#about:hover {
-  color: #007bff;
-  
-   transform: scale(1.05);
-  
-}
-/* Login Button */
-/* .login {
- 
-  position: absolute;
-  right: 20px;
-  border: 3px solid #007bff;
-  border-radius: 10px;
-  padding: 5px 12px;
   text-align: center;
-  transition: all 0.3s ease;
-  
-
-} */
-
-/* .login:hover {
-
-  background-color: #007bff; 
-  color: white;
+  margin-bottom: 40px;
 }
 
-.btn-icon{
-  background: transparent;
+/* ===============================
+   Card Styling
+=============================== */
+.card {
   border: none;
-  padding: 0;
-  cursor: pointer;
-  outline: none;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-input{
-  height: 40px;
-  width:300px;
-  border-radius: 10px;
-  padding-left: 10px;
-
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
 }
 
+.card-body {
+  padding: 1.3rem;
+}
 
-.search-container {
-      text-align:center ;
-      margin-top: 50px;
-      
-    } */
+/* ===============================
+   Card Images (Top or Side)
+=============================== */
+.card-img-top {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
 
-    /* .search-box {
-      position: relative;
-      display: inline-block;
+.card-img-right {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0 12px 12px 0;
+}
 
-      
-    }
+/* ===============================
+   Job Titles & Text
+=============================== */
+.card-title {
+  font-weight: 600;
+  color: #007bff;
+  margin-bottom: 10px;
+}
 
-    .search-box input {
-      width: 250px;
-      font-size: 16px;
-      border: 2px solid black;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
+.card-text {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
 
-    .search-box i {
-      position: absolute;
-      right: 10px;
-      top: 60%;
-      transform: translateY(-50%);
-      color: black;
-      cursor: pointer;
-    } 
-
-.foot{
-  padding-left: 30px;
+/* ===============================
+   Buttons
+=============================== */
+.btn-sm {
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  padding: 8px 14px;
   background-color: #00bcd4;
+  color: #fff;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
-.foot h5{
-  padding-left:10px;
-} */
 
- .social-card-header{
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    height: 96px;
+.btn-sm:hover {
+  background-color: #0097a7;
+  transform: translateY(-2px);
 }
-.social-card-header i {
-    font-size: 32px;
-    color:#FFF;
+
+/* ===============================
+   Responsive Design
+=============================== */
+@media (max-width: 992px) {
+  .card {
+    flex-direction: column !important;
+  }
+
+  .card-img-right {
+    border-radius: 12px 12px 0 0;
+  }
 }
-/* .bg-facebook {
-    background-color:#3b5998;
+
+@media (max-width: 768px) {
+  .section-heading {
+    font-size: 1.6rem;
+  }
+
+  .card-img-top {
+    height: 200px;
+  }
 }
-.text-facebook {
-    color:#3b5998;
+
+@media (max-width: 576px) {
+  h5 {
+    font-size: 1.05rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  .btn-sm {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
 }
-.bg-google-plus{
-    background-color:#dd4b39;
-}
-.text-google-plus {
-    color:#dd4b39;
-}
-.bg-twitter {
-    background-color:#1da1f2;
-}
-.text-twitter {
-    color:#1da1f2;
-}
-.bg-pinterest {
-    background-color:#bd081c;
-}
-.text-pinterest {
-    color:#bd081c;
-}
-.share:hover {
-        text-decoration: none;
-    opacity: 0.8;
-}
-.container{
-    margin-top:70px;
-}  */ */

@@ -2,142 +2,120 @@
 
 {% block title %} Jobs - Tech It {% endblock %}
 
-
 {% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/jobs.css') }}">
- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock %}
-
 
 {% block content %}
-    <!-- this is jobs section -->
-<div class="container">
-   <h3 class="pb-3 mb-4 font-italic border-bottom">
-      Card Styles
-   </h3>
-   <div class="row">
-      <div class="col-md-6">
-         <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-            <div class="card-body d-flex flex-column align-items-start">
-               <strong class="d-inline-block mb-2 text-primary">World</strong>
-               <h6 class="mb-0">
-                  <a class="text-dark" href="#">40 Percent of People Can’t Afford Basics</a>
-               </h6>
-               <div class="mb-1 text-muted small">Nov 12</div>
-               <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-               <a class="btn btn-outline-primary btn-sm" role="button" href="http://www.jquery2dotnet.com/">Continue reading</a>
-            </div>
-            <img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="//placeimg.com/250/250/arch" style="width: 200px; height: 250px;">
-         </div>
+<!-- ===============================
+     Jobs Section
+=============================== -->
+<div class="container jobs-page">
+  <h3 class="section-heading pb-3 mb-4 font-italic border-bottom text-center">
+    Career & Internship Opportunities
+  </h3>
+
+  <!-- ====== Row 1 ====== -->
+  <div class="row">
+    <div class="col-12 col-md-6 mb-4">
+      <div class="card flex-md-row shadow-sm h-100">
+        <div class="card-body d-flex flex-column align-items-start">
+          <strong class="d-inline-block mb-2 text-primary">Technology</strong>
+          <h5 class="mb-1"><a class="text-dark" href="#">Front-End Developer Internship</a></h5>
+          <div class="mb-2 text-muted small">Posted: Nov 12</div>
+          <p class="card-text mb-auto">
+            Join a dynamic team building responsive, user-friendly web applications using React and Bootstrap.
+          </p>
+          <a class="btn btn-outline-primary btn-sm mt-3" href="#">Apply Now</a>
+        </div>
+        <img class="card-img-right d-none d-lg-block" src="{{ url_for('static', filename='images/job1.jpg') }}" alt="Front-End Developer">
       </div>
-      <div class="col-md-6">
-         <div class="card flex-md-row mb-4 shadow-sm h-md-250">
-            <div class="card-body d-flex flex-column align-items-start">
-               <strong class="d-inline-block mb-2 text-success">Health</strong>
-               <h6 class="mb-0">
-                  <a class="text-dark" href="#">Food for Thought: Diet and Brain Health</a>
-               </h6>
-               <div class="mb-1 text-muted small">Nov 11</div>
-               <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-               <a class="btn btn-outline-success btn-sm" href="http://www.jquery2dotnet.com/">Continue reading</a>
-            </div>
-            <img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="//placeimg.com/250/250/nature" style="width: 200px; height: 250px;">
-         </div>
+    </div>
+
+    <div class="col-12 col-md-6 mb-4">
+      <div class="card flex-md-row shadow-sm h-100">
+        <div class="card-body d-flex flex-column align-items-start">
+          <strong class="d-inline-block mb-2 text-success">Marketing</strong>
+          <h5 class="mb-1"><a class="text-dark" href="#">Digital Marketing Executive</a></h5>
+          <div class="mb-2 text-muted small">Posted: Nov 11</div>
+          <p class="card-text mb-auto">
+            Lead SEO, SEM, and social campaigns to grow online presence and engagement.
+          </p>
+          <a class="btn btn-outline-success btn-sm mt-3" href="#">Apply Now</a>
+        </div>
+        <img class="card-img-right d-none d-lg-block" src="{{ url_for('static', filename='images/job2.jpg') }}" alt="Marketing Role">
       </div>
-   </div>
-   <div class="row">
-      <div class="col-md-6">
-         <div class="card border-primary flex-md-row mb-4 shadow-sm h-md-250">
-            <div class="card-body d-flex flex-column align-items-start">
-               <strong class="d-inline-block mb-2 text-primary">World</strong>
-               <h6 class="mb-0">
-                  <a class="text-dark" href="#">40 Percent of People Can’t Afford Basics</a>
-               </h6>
-               <div class="mb-1 text-muted small">Nov 12</div>
-               <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-               <a class="btn btn-outline-primary btn-sm" role="button" href="http://www.jquery2dotnet.com/">Continue reading</a>
-            </div>
-            <img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="//placeimg.com/250/250/arch" style="width: 200px; height: 250px;">
-         </div>
+    </div>
+  </div>
+
+  <!-- ====== Row 2 ====== -->
+  <div class="row">
+    <div class="col-12 col-md-6 mb-4">
+      <div class="card border-primary flex-md-row shadow-sm h-100">
+        <div class="card-body d-flex flex-column align-items-start">
+          <strong class="d-inline-block mb-2 text-primary">Design</strong>
+          <h5 class="mb-1"><a class="text-dark" href="#">UI/UX Designer</a></h5>
+          <div class="mb-2 text-muted small">Posted: Nov 10</div>
+          <p class="card-text mb-auto">
+            Create visually appealing, user-centered designs for mobile and web interfaces.
+          </p>
+          <a class="btn btn-outline-primary btn-sm mt-3" href="#">Apply Now</a>
+        </div>
+        <img class="card-img-right d-none d-lg-block" src="{{ url_for('static', filename='images/job3.jpg') }}" alt="UI/UX Designer">
       </div>
-      <div class="col-md-6">
-         <div class="card border-success flex-md-row mb-4 shadow-sm h-md-250">
-            <div class="card-body d-flex flex-column align-items-start">
-               <strong class="d-inline-block mb-2 text-success">Health</strong>
-               <h6 class="mb-0">
-                  <a class="text-dark" href="#">Food for Thought: Diet and Brain Health</a>
-               </h6>
-               <div class="mb-1 text-muted small">Nov 11</div>
-               <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-               <a class="btn btn-outline-success btn-sm" href="http://www.jquery2dotnet.com/">Continue reading</a>
-            </div>
-            <img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="//placeimg.com/250/250/nature" style="width: 200px; height: 250px;">
-         </div>
+    </div>
+
+    <div class="col-12 col-md-6 mb-4">
+      <div class="card border-success flex-md-row shadow-sm h-100">
+        <div class="card-body d-flex flex-column align-items-start">
+          <strong class="d-inline-block mb-2 text-success">Business</strong>
+          <h5 class="mb-1"><a class="text-dark" href="#">Data Analyst</a></h5>
+          <div class="mb-2 text-muted small">Posted: Nov 9</div>
+          <p class="card-text mb-auto">
+            Interpret complex data, analyze results, and deliver insights to support decision-making.
+          </p>
+          <a class="btn btn-outline-success btn-sm mt-3" href="#">Apply Now</a>
+        </div>
+        <img class="card-img-right d-none d-lg-block" src="{{ url_for('static', filename='images/job4.jpg') }}" alt="Data Analyst">
       </div>
-   </div>
-   <div class="row">
-      <div class="col-md-6">
-         <div class="card text-white bg-primary flex-md-row mb-4 shadow-sm h-md-250">
-            <div class="card-body d-flex flex-column align-items-start">
-               <strong class="d-inline-block mb-2 text-white">World</strong>
-               <h6 class="mb-0">
-                  <a class="text-white" href="#">40 Percent of People Can’t Afford Basics</a>
-               </h6>
-               <div class="mb-1 text-white-50 small">Nov 12</div>
-               <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-               <a class="btn btn-outline-light btn-sm" role="button" href="http://www.jquery2dotnet.com/">Continue reading</a>
-            </div>
-            <img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="//placeimg.com/250/250/arch" style="width: 200px; height: 250px;">
-         </div>
+    </div>
+  </div>
+
+  <!-- ====== Row 3 (Compact Cards) ====== -->
+  <div class="row">
+    <div class="col-12 col-md-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        <img class="card-img-top" src="{{ url_for('static', filename='images/job5.jpg') }}" alt="Software Tester">
+        <div class="card-body">
+          <h5 class="card-title">Software Tester</h5>
+          <p class="card-text">Test software applications for bugs and usability to ensure quality performance.</p>
+          <a href="#" class="btn btn-outline-dark btn-sm">Apply Now</a>
+        </div>
       </div>
-      <div class="col-md-6">
-         <div class="card text-white bg-success flex-md-row mb-4 shadow-sm h-md-250">
-            <div class="card-body d-flex flex-column align-items-start">
-               <strong class="d-inline-block mb-2 text-white">Health</strong>
-               <h6 class="mb-0">
-                  <a class="text-white" href="#">Food for Thought: Diet and Brain Health</a>
-               </h6>
-               <div class="mb-1 text-white-50 small">Nov 11</div>
-               <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-               <a class="btn btn-outline-light btn-sm" href="http://www.jquery2dotnet.com/">Continue reading</a>
-            </div>
-            <img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="//placeimg.com/250/250/nature" style="width: 200px; height: 250px;">
-         </div>
+    </div>
+
+    <div class="col-12 col-md-4 mb-4">
+      <div class="card h-100 shadow-sm border-dark">
+        <img class="card-img-top" src="{{ url_for('static', filename='images/job6.jpg') }}" alt="Cloud Engineer">
+        <div class="card-body">
+          <h5 class="card-title">Cloud Engineer</h5>
+          <p class="card-text">Work on AWS and Azure infrastructure — manage, deploy, and secure cloud resources.</p>
+          <a href="#" class="btn btn-dark btn-sm">Apply Now</a>
+        </div>
       </div>
-   </div>
-   <div class="row">
-      <div class="col-md-4">
-         <div class="card mb-4">
-            <img class="card-img-top" src="//placeimg.com/290/180/any" alt="Card image cap">
-            <div class="card-body">
-               <h5 class="card-title">Card title</h5>
-               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-               <a href="http://www.jquery2dotnet.com/" class="btn btn-outline-dark btn-sm">Go somewhere</a>
-            </div>
-         </div>
+    </div>
+
+    <div class="col-12 col-md-4 mb-4">
+      <div class="card h-100 text-white bg-dark shadow-sm">
+        <img class="card-img-top" src="{{ url_for('static', filename='images/job7.jpg') }}" alt="Cybersecurity Specialist">
+        <div class="card-body">
+          <h5 class="card-title">Cybersecurity Specialist</h5>
+          <p class="card-text">Protect systems and networks from cyber threats using modern security techniques.</p>
+          <a href="#" class="btn btn-outline-light btn-sm">Apply Now</a>
+        </div>
       </div>
-      <div class="col-md-4">
-         <div class="card mb-4 border-dark">
-            <img class="card-img-top" src="//placeimg.com/290/180/any" alt="Card image cap">
-            <div class="card-body">
-               <h5 class="card-title">Card title</h5>
-               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-               <a href="http://www.jquery2dotnet.com/" class="btn btn-dark btn-sm">Go somewhere</a>
-            </div>
-         </div>
-      </div>
-      <div class="col-md-4">
-         <div class="card mb-4 text-white bg-dark">
-            <img class="card-img-top" src="//placeimg.com/290/180/any" alt="Card image cap">
-            <div class="card-body">
-               <h5 class="card-title">Card title</h5>
-               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-               <a href="http://www.jquery2dotnet.com/" class="btn btn-outline-light btn-sm">Go somewhere</a>
-            </div>
-         </div>
-      </div>
-   </div>
-   </div>
-     
+    </div>
+  </div>
+</div>
 {% endblock %}
-  

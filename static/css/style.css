@@ -1,109 +1,62 @@
-/* ===========================
-   Global Reset & Body
-=========================== */
+/* ===============================
+   🌐 Global Reset & Base Setup
+=============================== */
+
+/* Theme color variables */
+:root {
+  --techit-primary: #007bff;      /* primary blue */
+  --techit-accent: #00bcd4;       /* cyan accent */
+  --techit-accent-dark: #0097a7;  /* hover/darker accent */
+  --page-bg: #ffffff;             /* main background */
+  --page-shell: #f8f9fa;          /* light grey background */
+  --text-default: #222222;
+  --text-muted: #666666;
+}
+
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
-  background-color: white;
-  /* font-family: Arial, sans-serif; */
-}
-
-/* ===========================
-   Header Section
-=========================== */
-.header {
-  height: 65px;
   width: 100%;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--page-bg);
+  color: var(--text-default);
+  scroll-behavior: smooth;
 }
 
-.header a {
-  text-decoration: none;
-  color: black;
-  font-weight: bolder;
-}
-#logo{ height: 50px;
-     width: 130px;
-     border-radius:15px;
-     margin-left: 10px;
+/* Prevent content hiding behind navbar */
+main {
+  margin-top: 80px;
 }
 
-/* Login Button */
-.login {
-  border-radius: 10px;
-  border: 4px solid #007bff;
-  padding: 5px;
-  border-width: 3px;
-  text-align: center;
-  margin-left: auto;
-  color: black;
-  
-
+/* Logo */
+#logo {
+  margin-left: 1rem;
+  width: 8rem;
+  height: auto;
+  border-radius: 1rem;
+  max-width: 100%;
 }
 
-.login:hover {
-
-  background-color: #007bff; 
-  color: white;
-}
-
-.btn-icon {
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  outline: none;
-}
-
-/* Input Field */
-input {
-  height: 40px;
-   max-width: 300px;
-  border-radius: 10px;
-  padding-left: 10px;
-}
-
-/* ===========================
-   Hero Slider Section
-=========================== */
-/* ===========================
-   Hero Slider Section (FINAL FIX)
-=========================== */
-/* ===========================
-   Hero Slider Section (RESPONSIVE)
-=========================== */
-/* ===========================
-   Hero Slider Section (No Gaps + Responsive)
-=========================== */
+/* ===============================
+   🖼 Hero / Slider Section
+=============================== */
 .hero {
   position: relative;
   width: 100%;
-  height: 85vh; /* taller for desktop, adjusts on mobile */
-  margin-top: 65px; /* only enough to clear fixed header */
+  height: 85vh;
   overflow: hidden;
   background-color: #000;
 }
 
+/* Slides */
 .slide {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -112,7 +65,6 @@ input {
   transition: opacity 1s ease-in-out;
 }
 
-/* Each image */
 .slide1 {
   background-image: url("/static/images/slide1.jpg");
   animation-delay: 0s;
@@ -126,7 +78,7 @@ input {
   animation-delay: 10s;
 }
 
-/* Smooth fade animation */
+/* Fade animation */
 @keyframes slideShow {
   0%, 20% { opacity: 1; }
   25%, 100% { opacity: 0; }
@@ -135,440 +87,259 @@ input {
 /* Mobile fix */
 @media (max-width: 768px) {
   .hero {
-    height: 50vh;  /* smaller height for phones */
-    margin-top: 55px;
+    height: 55vh;
   }
 }
 
-
-
-
-.hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: white;
-  z-index: 10;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 2rem;
-  border-radius: 10px;
-}
-
-.hero-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.hero-content p {
-  margin-bottom: 1.5rem;
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.7rem 1.5rem;
-  background: #00bcd4;
-  color: white;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background 0.3s;
-}
-
-.btn:hover {
-  background: #0097a7;
-}
-
-/* ===========================
-   Search Section
-=========================== */
-.search-container {
-  text-align: center;
-  margin-top: 50px;
-}
-
-.search-box {
-  position: relative;
-  display: inline-block;
-}
-
-.search-box input {
-  max-width: 250px;
-  font-size: 16px;
-  border: 2px solid black;
-  border-radius: 10px;
-  margin-top: 10px;
-}
-
-.search-box i {
-  position: absolute;
-  right: 10px;
-  top: 60%;
-  transform: translateY(-50%);
-  color: black;
-  cursor: pointer;
-}
-
-/* ===========================
-   Navigation Links
-=========================== */
-#home, #All, #jobs, #about {
-  font-size: 16px;
-}
-#home{
-  padding-left:20px;
-}
-
-#home:hover,
-#All:hover,
-#jobs:hover,
-#about:hover {
-  font-size: 20px;
-  color: #007bff;
-}
-
-#home.active {
-  font-size: 20px;
-  color: #007bff;
-}
-
-#jobs {
-  margin-left: 0;
-}
-/* ===========================
-   Responsive Navbar
-=========================== */
-.menu-toggle {
-  display: none;
-  font-size: 24px;
-  cursor: pointer;
-  margin-left: auto;
-  padding: 10px;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-/* ----- MOBILE VIEW ----- */
-@media (max-width: 768px) {
-  .header {
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 10px;
-    height: auto;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    text-align: left;
-    padding: 10px 0;
-    background-color: white;
-    border-top: 1px solid #ddd;
-  }
-
-  .nav-links {
-  display: none;
-  flex-direction: column;
-  width: 100%;
-  text-align: left;
-  padding: 10px 0;
-  background-color: white;
-  border-top: 1px solid #ddd;
-  transition: max-height 0.3s ease-in-out, opacity 0.3s ease;
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-}
-
-.nav-links.active {
-  display: flex;
-  max-height: 400px;
-  opacity: 1;
-}
-
-
-
-  .nav-links a {
-    padding: 10px;
-    width: 100%;
-    border-radius: 5px;
-  }
-
-  .nav-links a:hover {
-    background-color: #f5f5f5;
-  }
-
-  .search-box {
-    width: 100%;
-    order: 3;
-    text-align: center;
-  }
-
-  .login {
-    margin-left: 0;
-    align-self: center;
-  }
-}
-
-
-/* ===========================
-   Courses Section
-=========================== */
-/* ===========================
-   Courses Section (Bootstrap layout)
-=========================== */
-/* ===========================
-   Courses Section (Final Professional Look)
-=========================== */
+/* ===============================
+   📚 Courses Section
+=============================== */
 .courses {
-  margin: 60px auto;
-  padding: 20px;
+  margin: 80px auto;
+  padding: 40px 20px;
   max-width: 1200px;
-  background-color: #fff;
+  background: #ffffff;
   border-radius: 20px;
-  border: 2px solid #ddd;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.courses .col-12 {
-  display: flex;
-  justify-content: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .courses .card {
-  display: flex;
-  flex-direction: column;   /* makes content flow vertically */
-  justify-content: space-between; /* keeps button aligned at bottom */
-  width: 100%;
-  max-width: 280px;
-  height: 100%;             /* ensures equal height */
-  border: 1px solid #eee;
+  border: none;
   border-radius: 15px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
 }
 
 .courses .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.2);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.15);
 }
 
 .courses img {
   width: 100%;
   height: 180px;
   object-fit: cover;
-  border-bottom: 1px solid #ddd;
-  border-radius: 10px 10px 0 0;
 }
 
 .courses .card-body {
   text-align: center;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* equal spacing between title/text/button */
-  padding: 15px;
+  padding: 20px;
 }
 
 .courses .card-title {
-  font-size: 1rem;
-  font-weight: bold;
+  font-size: 1.1rem;
+  font-weight: 600;
   margin-bottom: 10px;
+  color: var(--techit-primary);
 }
 
 .courses .card-text {
-  flex-grow: 1; /* pushes button to bottom */
   font-size: 0.9rem;
   color: #444;
+  min-height: 80px;
 }
 
 .courses .btn {
-  background-color: #00bcd4;
+  background-color: var(--techit-accent);
   border: none;
-  color: white;
+  color: #fff;
   font-weight: 600;
   padding: 8px 16px;
   border-radius: 8px;
-  margin-top: 15px;
-  align-self: center;
+  margin-top: 10px;
   transition: background-color 0.3s ease;
 }
 
 .courses .btn:hover {
-  background-color: #0097a7;
+  background-color: var(--techit-accent-dark);
 }
 
-/* Responsive fix */
+/* Responsive Fix */
 @media (max-width: 768px) {
+  #logo {
+    width: 6rem;
+    margin-left: 0.5rem;
+  }
+
   .courses {
-    padding: 10px;
+    margin: 40px auto;
+    padding: 20px;
   }
-  .courses .card {
+}
+
+/* ===============================
+    🎓 Certificate Slider (Manual Only, Corrected)
+=============================== */
+
+.cert-slider {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    height: 400px;
+    margin: 50px auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background-color: #f8f9fa;
+}
+
+/* Slides container */
+.cert-slides {
+    display: flex;
+    /* Use 300% for 3 slides, 400% for 4, etc. */
+    width: 300%; 
+    height: 100%;
+    transition: transform 0.6s ease-in-out;
+}
+
+/* Each individual certificate */
+.cert-sli {
+    flex: 1 0 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+}
+
+.cert-sli img {
     max-width: 100%;
-  }
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    padding: 10px;
+    display: block;
 }
 
-
-
-
-.view-button:hover {
-  background-color: #2980b9;
-} */
-.crt{ 
-  background-color: #0c0d0e;
-  /* justify-content: center; */
-}
-.crt1{
-  background-color: aliceblue;
-}
-.crt2{
-  background-color: #555;
-  
-  background-size: cover;
-}
-/* .cart2 img{
-  max-height:400px; 
-  max-width: 100%;
-} */
-.crt3{ 
-  background-color: blue;
+/* Hide the radio buttons */
+input[type="radio"] {
+    display: none;
 }
 
-
-/* ===========================
-   Placements Section
-=========================== */
-.main-container {
-  max-width: 1200px;
-  width: 100%;
-  text-align: center;
-  margin-top: 20px;
-  margin-left: 65px;
+/* Slide movement logic */
+#cert1:checked ~ .cert-slides {
+    transform: translateX(0%);
+}
+#cert2:checked ~ .cert-slides {
+    transform: translateX(-100%);
+}
+#cert3:checked ~ .cert-slides {
+    transform: translateX(-200%);
 }
 
-.logo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 40px 20px;
-  align-items: center;
-  justify-content: center;
-  padding: 20px 0;
+/* Navigation dots */
+.cert-navigation {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10; /* Added z-index to ensure visibility */
 }
 
-.logo-grid img {
-  max-width: 140px;
-  max-height: 45px;
-  object-fit: contain;
-  opacity: 2.7;
-   transition: all 0.3s ease-in-out; 
+.nav-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.logo-grid img:hover {
-  opacity: 3;
-  transform: scale(3.1);
-  cursor: pointer;
-}
-.foot {
-  padding: 40px;
-  background-color: #00bcd4;
-  color: white;
-}
-.foot a {
-  color: white;
-  text-decoration: none;
-}
-.foot a:hover {
-  text-decoration: underline;
+.nav-btn:hover {
+    background: white;
 }
 
-.gmail{
-  font-size: 15px;
-  font-family: inherit;
+/* Active dot highlight */
+#cert1:checked ~ .cert-navigation #btn1,
+#cert2:checked ~ .cert-navigation #btn2,
+#cert3:checked ~ .cert-navigation #btn3 {
+    background: white;
 }
 
-/* ===========================
-   Call To Action (CTA)
-=========================== */
-.cta-section {
-  margin-top: 60px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Arrows - General Style */
+.cert-manual-nav {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 10;
 }
 
-.cta-text {
-  font-size: 1.2rem;
-  color: #555;
-  max-width: 650px;
-  line-height: 1.6;
-  margin-bottom: 30px;
+.prev-btn,
+.next-btn {
+    font-size: 32px;
+    background: rgba(255,255,255,0.8);
+    color: #000;
+    border-radius: 50%;
+    padding: 5px 12px;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.3s;
+    line-height: 1; /* Ensures vertical centering of the arrow symbol */
 }
 
-.join-button {
-  background-color: #4A90E2;
-  color: white;
-  border: none;
-  padding: 16px 45px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.prev-btn:hover,
+.next-btn:hover {
+    background: white;
 }
 
-.join-button:hover {
-  background-color: #357ABD;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+/* --- NEW CSS for Arrow Visibility --- */
+/* Hide all arrow labels by default in the manual nav container */
+.cert-manual-nav label {
+    display: none;
 }
 
-/* ===========================
-   WhatsApp Floating Button
-=========================== */
-.whatsapp-fab {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  width: 60px;
-  height: 60px;
-  background-color: #25D366;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  color: white;
-  font-size: 32px;
-  text-decoration: none;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease;
+/* 1. When cert1 is checked (Slide 1) */
+#cert1:checked ~ .cert-manual-nav .next-cert1 {
+    display: block; /* Show NEXT button (links to cert2) */
+}
+#cert1:checked ~ .cert-manual-nav .prev-cert1 {
+    display: block; /* Show PREV button (links to cert3, the last slide) */
 }
 
-.whatsapp-fab:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+/* 2. When cert2 is checked (Slide 2) */
+#cert2:checked ~ .cert-manual-nav .next-cert2 {
+    display: block; /* Show NEXT button (links to cert3) */
+}
+#cert2:checked ~ .cert-manual-nav .prev-cert2 {
+    display: block; /* Show PREV button (links to cert1) */
 }
 
-/* ===========================
-   Logo Scroller Section
-=========================== */
+/* 3. When cert3 is checked (Slide 3) */
+#cert3:checked ~ .cert-manual-nav .next-cert3 {
+    display: block; /* Show NEXT button (links to cert1, looping) */
+}
+#cert3:checked ~ .cert-manual-nav .prev-cert3 {
+    display: block; /* Show PREV button (links to cert2) */
+}
+/* ------------------------------------- */
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cert-slider { height: 250px; }
+}
+@media (max-width: 480px) {
+    .cert-slider { height: 200px; }
+}
+/* ===============================
+   🏢 Logo Scroller (Placement)
+=============================== */
 .logo-scroller-container {
   max-width: 1200px;
-  margin: auto;
-  padding: 2rem 0;
+  margin: 60px auto;
+  background: #fff;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 40px 0;
 }
 
 .scroller {
-  max-width: 1100px;
+  max-width: 100%;
   overflow: hidden;
   -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
   mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
@@ -577,8 +348,8 @@ input {
 .scroller-inner {
   display: flex;
   align-items: center;
-  gap: 2.5rem;
-  padding-block: 1.5rem;
+  gap: 3rem;
+  padding-block: 1rem;
   width: max-content;
   animation: scroll 25s linear infinite;
 }
@@ -593,112 +364,57 @@ input {
 
 @keyframes scroll {
   to {
-    transform: translate(calc(-50% - 1.25rem));
+    transform: translate(calc(-50% - 1.5rem));
   }
 }
 
 .scroller-inner img {
-  height: 45px;
+  height: 50px;
   max-width: 150px;
   object-fit: contain;
+  opacity: 0.85;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-
- .carousel {
-  width: 95%;
-  height: 600px;
-  position: relative;
-  perspective: 1200px;
-  overflow: hidden;
-  padding-bottom: 50px;
-  margin-left: 40px;
+.scroller-inner img:hover {
+  transform: scale(1.15);
+  opacity: 1;
 }
 
-/* Carousel container (rotating) */
-.carousel__container {
-  width: 95%;
-  height: 100%;
-  position: absolute;
-  transform-style: preserve-3d;
-  animation: rotateCarousel 12s linear infinite;
-  transition: transform 0.5s ease-in-out;
-}
-
-/* Stop rotation when hovering anywhere on the carousel */
-.carousel:hover .carousel__container {
-  animation-play-state: paused;
-}
-
-/* Each item (image card) */
-.carousel__item {
-  position: absolute;
-  width: 400px;
-  height: 270px;
-  left: 50%;
-  top: 50%;
-  margin: -100px -100px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 20px 15px rgba(0, 0, 0, 0.5);
-  background: black;
-  transition: transform 0.6s ease, box-shadow 0.6s ease;
-}
-
-/* Image inside the item */
-.carousel__item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-/* Hover on specific image — zoom slightly */
-.carousel__item:hover img {
-  transform: scale(1.1);
-}
-
-/* Stop rotation when hovering a specific item */
-.carousel__item:hover ~ .carousel__container {
-  animation-play-state: paused;
-}
-
-/* 3 items positioned around a circle */
-.carousel__item:nth-child(1) {
-  transform: rotateY(0deg) translateZ(350px);
-}
-
-.carousel__item:nth-child(2) {
-  transform: rotateY(120deg) translateZ(350px);
-}
-
-.carousel__item:nth-child(3) {
-  transform: rotateY(240deg) translateZ(350px);
-}
-
-/* Rotation animation */
-@keyframes rotateCarousel {
-  0% { transform: rotateY(0deg); }
-  33.33% { transform: rotateY(-120deg); }
-  66.66% { transform: rotateY(-240deg); }
-  100% { transform: rotateY(-360deg); }
-}
-
-@media (max-width: 768px) {
-  .header{
-    flex-wrap: wrap;
-    height: auto;
-    padding: 10px 5px;
+/* ===============================
+   📱 Responsive Adjustments
+=============================== */
+@media (max-width: 992px) {
+  .courses .card {
+    max-width: 90%;
+    margin: auto;
   }
-  .login {
-        margin-left: 0; 
-        width: 100%;
-    }
-  .search-box input {
-        width: 100%;
-        max-width: 90%; 
-    }
-  .header a {
-        width: 100%; 
-        text-align: left;
-    }
+
+  .logo-scroller-container {
+    padding: 30px 0;
+  }
+
+  .scroller-inner img {
+    height: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  #logo {
+    width: 5rem;
+    margin-left: 0;
+  }
+
+  .courses {
+    margin: 30px 10px;
+    padding: 15px;
+  }
+
+  .courses .card-title {
+    font-size: 1rem;
+  }
+
+  .hero {
+    height: 45vh;
+  }
 }
