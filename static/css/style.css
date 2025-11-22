@@ -5,18 +5,46 @@
 /* Theme color variables */
 :root {
   --techit-primary: #007bff;      /* primary blue */
-  --techit-accent: #00bcd4;       /* cyan accent */
-  --techit-accent-dark: #0097a7;  /* hover/darker accent */
+  --techit-accent: #007bff;       /* cyan accent */
+  --techit-accent-dark: #007bff;  /* hover/darker accent */
   --page-bg: #ffffff;             /* main background */
   --page-shell: #f8f9fa;          /* light grey background */
-  --text-default: #222222;
+  --text-default: #2222;
   --text-muted: #666666;
+
+}
+.navbar{
+  box-shadow: 2px 5px 8px black;
+}
+.text-center:hover {
+  color: #007bff;
+}
+
+/* This is your new rule for the ACTIVE link.
+  It makes the active link's text and icon blue.
+*/
+.navbar-nav .nav-link.active .small,
+.navbar-nav .nav-link.active i {
+  color: var(--techit-primary) !important; /* Your blue variable */
+  font-weight: 530; 
+  
+}
+
+/* This rule makes sure the active link STAYS blue
+  even when you hover over it.
+*/
+.text-center:hover.active {
+  color: #007bff;
+}
+.btn-primary{
+  margin-top:0.5rem;
+  margin-right:-2rem;
 }
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+   box-sizing: border-box; 
 }
 
 html, body {
@@ -45,15 +73,17 @@ main {
 /* ===============================
    🖼 Hero / Slider Section
 =============================== */
-.hero {
+
+ .hero {
   position: relative;
   width: 100%;
-  height: 85vh;
+  height: 90vh;
+  margin-top: 4%;
   overflow: hidden;
-  background-color: #000;
+  background-color: #000; /* fallback in case images don't load */
 }
 
-/* Slides */
+/* Each slide stacked over one another */
 .slide {
   position: absolute;
   inset: 0;
@@ -61,12 +91,12 @@ main {
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0;
-  animation: slideShow 15s infinite;
-  transition: opacity 1s ease-in-out;
+  animation: crossfade 15s infinite;
 }
 
+/* Add your images here */
 .slide1 {
-  background-image: url("/static/images/slide1.jpg");
+  background-image: url("/static/images/cloud.jpg");
   animation-delay: 0s;
 }
 .slide2 {
@@ -78,18 +108,32 @@ main {
   animation-delay: 10s;
 }
 
-/* Fade animation */
-@keyframes slideShow {
-  0%, 20% { opacity: 1; }
-  25%, 100% { opacity: 0; }
+/* Smooth crossfade effect */
+@keyframes crossfade {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  33.33% {
+    opacity: 0;
+  }
+  92% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-/* Mobile fix */
+/* Responsive */
 @media (max-width: 768px) {
   .hero {
     height: 55vh;
   }
 }
+
 
 /* ===============================
    📚 Courses Section
@@ -171,161 +215,126 @@ main {
 /* ===============================
     🎓 Certificate Slider (Manual Only, Corrected)
 =============================== */
-
-.cert-slider {
-    position: relative;
-    width: 90%;
-    max-width: 900px;
-    height: 400px;
-    margin: 50px auto;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    background-color: #f8f9fa;
+.slider {
+  position: relative;
+  width: 90%;
+  max-width: 900px;
+  height: 400px;
+  margin: 50px auto;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* Slides container */
-.cert-slides {
-    display: flex;
-    /* Use 300% for 3 slides, 400% for 4, etc. */
-    width: 300%; 
-    height: 100%;
-    transition: transform 0.6s ease-in-out;
+/* ============= SLIDES ============= */
+.slides {
+  display: flex;
+  width: 400%; /* for 4 slides */
+  height: 100%;
+  transition: transform 0.6s ease-in-out;
 }
 
-/* Each individual certificate */
-.cert-sli {
-    flex: 1 0 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f8f9fa;
+.sli {
+  width: 100%;
+  height: 100%;
+  flex: 1 0 100%;
 }
 
-.cert-sli img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    border-radius: 10px;
-    padding: 10px;
-    display: block;
+.sli img {
+  width: 25%;
+  height: 100%;
+  background-image:cover;
+  
 }
 
-/* Hide the radio buttons */
+/* ============= RADIO BUTTONS (HIDDEN) ============= */
 input[type="radio"] {
-    display: none;
+  display: none;
 }
 
-/* Slide movement logic */
-#cert1:checked ~ .cert-slides {
-    transform: translateX(0%);
-}
-#cert2:checked ~ .cert-slides {
-    transform: translateX(-100%);
-}
-#cert3:checked ~ .cert-slides {
-    transform: translateX(-200%);
-}
+/* ============= SLIDE CONTROL ============= */
+#slide1:checked ~ .slides { transform: translateX(0%); }
+#slide2:checked ~ .slides { transform: translateX(-100%); }
+#slide3:checked ~ .slides { transform: translateX(-200%); }
+/* #slide4:checked ~ .slides { transform: translateX(-300%); } */
 
-/* Navigation dots */
-.cert-navigation {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-    z-index: 10; /* Added z-index to ensure visibility */
+/* ============= DOT NAVIGATION ============= */
+.navigation {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
 }
 
 .nav-btn {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    transition: 0.3s;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .nav-btn:hover {
-    background: white;
+  background: white;
 }
 
-/* Active dot highlight */
-#cert1:checked ~ .cert-navigation #btn1,
-#cert2:checked ~ .cert-navigation #btn2,
-#cert3:checked ~ .cert-navigation #btn3 {
-    background: white;
+#slide1:checked ~ .navigation #btn1,
+#slide2:checked ~ .navigation #btn2,
+#slide3:checked ~ .navigation #btn3,
+#slide4:checked ~ .navigation #btn4 {
+  background: white;
 }
 
-/* Arrows - General Style */
-.cert-manual-nav {
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-    z-index: 10;
+/* ============= NEXT & PREV BUTTONS ============= */
+.manual-nav {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
 }
 
 .prev-btn,
 .next-btn {
-    font-size: 32px;
-    background: rgba(255,255,255,0.8);
-    color: #000;
-    border-radius: 50%;
-    padding: 5px 12px;
-    cursor: pointer;
-    user-select: none;
-    transition: 0.3s;
-    line-height: 1; /* Ensures vertical centering of the arrow symbol */
+  font-size: 35px;
+  background: whitesmoke;
+  color: black;
+  border-radius: 50%;
+  padding: 5px 12px;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.3s;
 }
 
 .prev-btn:hover,
 .next-btn:hover {
-    background: white;
+  background: grey;
+  color:white;
 }
 
-/* --- NEW CSS for Arrow Visibility --- */
-/* Hide all arrow labels by default in the manual nav container */
-.cert-manual-nav label {
-    display: none;
+/* Show only the correct next/prev for each slide */
+#slide1:checked ~ .manual-nav .prev label[for="slide4"],
+#slide2:checked ~ .manual-nav .prev label[for="slide1"],
+#slide3:checked ~ .manual-nav .prev label[for="slide2"],
+#slide4:checked ~ .manual-nav .prev label[for="slide3"],
+#slide1:checked ~ .manual-nav .next label[for="slide2"],
+#slide2:checked ~ .manual-nav .next label[for="slide3"],
+#slide3:checked ~ .manual-nav .next label[for="slide4"],
+#slide4:checked ~ .manual-nav .next label[for="slide1"] {
+
+  display: inline-block;
 }
 
-/* 1. When cert1 is checked (Slide 1) */
-#cert1:checked ~ .cert-manual-nav .next-cert1 {
-    display: block; /* Show NEXT button (links to cert2) */
+.manual-nav .prev label,
+.manual-nav .next label {
+  display: none;
 }
-#cert1:checked ~ .cert-manual-nav .prev-cert1 {
-    display: block; /* Show PREV button (links to cert3, the last slide) */
-}
-
-/* 2. When cert2 is checked (Slide 2) */
-#cert2:checked ~ .cert-manual-nav .next-cert2 {
-    display: block; /* Show NEXT button (links to cert3) */
-}
-#cert2:checked ~ .cert-manual-nav .prev-cert2 {
-    display: block; /* Show PREV button (links to cert1) */
-}
-
-/* 3. When cert3 is checked (Slide 3) */
-#cert3:checked ~ .cert-manual-nav .next-cert3 {
-    display: block; /* Show NEXT button (links to cert1, looping) */
-}
-#cert3:checked ~ .cert-manual-nav .prev-cert3 {
-    display: block; /* Show PREV button (links to cert2) */
-}
-/* ------------------------------------- */
-
-/* Responsive */
-@media (max-width: 768px) {
-    .cert-slider { height: 250px; }
-}
-@media (max-width: 480px) {
-    .cert-slider { height: 200px; }
-}
+ 
 /* ===============================
    🏢 Logo Scroller (Placement)
 =============================== */
@@ -341,8 +350,8 @@ input[type="radio"] {
 .scroller {
   max-width: 100%;
   overflow: hidden;
-  -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
-  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  -webkit-mask: linear-gradient(180deg, transparent, white 20%, white 80%, transparent);
+  mask: linear-gradient(180deg, transparent, white 20%, white 80%, transparent);
 }
 
 .scroller-inner {
@@ -351,7 +360,7 @@ input[type="radio"] {
   gap: 3rem;
   padding-block: 1rem;
   width: max-content;
-  animation: scroll 25s linear infinite;
+  animation: scroll 10s linear infinite;
 }
 
 .scroller[data-direction="right"] .scroller-inner {
@@ -367,9 +376,8 @@ input[type="radio"] {
     transform: translate(calc(-50% - 1.5rem));
   }
 }
-
 .scroller-inner img {
-  height: 50px;
+  height: 70px;
   max-width: 150px;
   object-fit: contain;
   opacity: 0.85;
@@ -415,6 +423,112 @@ input[type="radio"] {
   }
 
   .hero {
-    height: 45vh;
+    
+    height: 35vh;
+    
   }
+}
+
+/* 
+=======footer section=========
+*/
+
+.site-footer {
+    background-color: #2c3e50; /* A modern, dark blue-gray background */
+    color: #bdc3c7;            /* Light gray text for readability */
+    padding: 50px 0;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+/* Flexbox container for the columns */
+  .footer-container {
+    display: flex;
+    justify-content: space-around; /* Distributes columns evenly */
+    flex-wrap: wrap;               /* Allows columns to stack on smaller screens */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Styling for each column */
+.footer-column {
+    flex: 1;                 /* Allows columns to grow */
+    min-width: 250px;        /* Prevents columns from becoming too narrow */
+    margin: 20px;
+}
+
+/* Styling for the headings in each column */
+.footer-column h3 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3498db; /* Blue accent line */
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+/* Styling for paragraphs in the footer */
+.footer-column p {
+    margin-bottom: 10px;
+}
+
+/* Remove default list styles for the links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+/* Styling for links */
+.footer-links a, .footer-column a {
+    color: #bdc3c7;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition on hover */
+}
+
+/* Link hover effect */
+.footer-links a:hover, .footer-column a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Bottom section containing social icons and copyright */
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #444; /* Separator line */
+}
+
+/* Styling for the social media icons */
+.social-icons a {
+    color: #ffffff;
+    font-size: 24px;
+    margin: 0 12px;
+    transition: color 0.3s ease;
+}
+
+/* Social icon hover effect */
+.social-icons a:hover {
+    color: #3498db; /* Change color to blue on hover */
+}
+
+/* Styling for the copyright text */
+.copyright-text {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #7f8c8d; /* A slightly darker gray for the copyright */
+}
+.text-center{
+  color: black;
+}
+.text-center:hover{
+color:#007bff;
+}
+.text-center:hover.active{
+  color: #007bff;
 }

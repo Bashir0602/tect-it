@@ -1,4 +1,5 @@
 import os
+from flask import render_template, redirect, url_for, flash, session, request
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_bcrypt import Bcrypt
 from functools import wraps
@@ -19,7 +20,7 @@ bcrypt = Bcrypt(app)
 # --- 2. FIREBASE INITIALIZATION ---
 try:
     # Path to service account JSON key
-    json_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tech-it-2025-dc06080d93ae.json")
+    json_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tech-it-firebase-db.json")
 
     if not firebase_admin._apps:
         cred = credentials.Certificate(json_path)
@@ -50,19 +51,19 @@ def login_required(f):
 # --- 4. STANDARD ROUTES ---
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', active_page='home')
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html' , active_page='about')
 
 @app.route('/courses')
 def courses():
-    return render_template('courses.html')
+    return render_template('courses.html', active_page='courses')
 
 @app.route('/jobs')
 def jobs():
-    return render_template('jobs.html')
+    return render_template('jobs.html' ,active_page='jobs')
 
 @app.route('/search_results', methods=['GET', 'POST'])
 def search_results():
@@ -157,9 +158,53 @@ def handle_signup():
         return redirect(url_for('handle_login'))
 
     return render_template('signup.html')
+# --- 7. ENROLLMENT ROUTE (NYA LOGIC YAHAN HAI) ---
+@app.route('/enroll', methods=['POST'])
+@login_required # Sirf logged-in users hi enroll kar sakte hain
+def handle_enroll():
+    if not db:
+        flash("System Error: Database connection failed.", 'error')
+        return redirect(url_for('courses'))
 
+    try:
+        # Form se course ka naam aur session se user ka email lo
+        course_name = request.form.get('course_name')
+        user_email = session.get('user_email') 
 
-# --- 7. LOGOUT ROUTE ---
+        if not course_name or not user_email:
+            flash("An error occurred (missing data). Please try again.", 'error')
+            return redirect(url_for('courses'))
+
+        # Firestore mein save karne ke liye data taiyyar karo
+        enrollment_data = {
+            'user_email': user_email,
+            'course_name': course_name,
+            'enroll_time': datetime.utcnow() # UTC mein time store karna best practice hai
+        }
+
+        # 'enrollments' naam ke naye collection mein data add karo
+        # .add() automatic unique ID bana dega
+        db.collection("enrollments").add(enrollment_data)
+
+        flash(f"Successfully enrolled in {course_name}!", 'success')
+
+    except Exception as e:
+        print(f"❌ ERROR: Enrollment failed: {e}")
+        flash("An error occurred during enrollment.", 'error')
+
+    # Waapas courses page par bhej do
+    return redirect(url_for('courses_info',course_name =course_name))
+@app.route('/courses_info/<course_name>')
+@login_required
+def courses_info(course_name):
+    
+    # Yahan hum database se uss course ki details laa sakte hain
+    # Abhi ke liye, hum bas naam ko template mein bhej rahe hain
+    
+    # 'course_name' variable apne aap URL se aa jayega
+    return render_template('course_info.html', course_name=course_name)
+
+# --- 8. LOGOUT ROUTE ---
 @app.route('/logout')
 def logout():
     session.clear()
@@ -167,6 +212,6 @@ def logout():
     return redirect(url_for('index'))
 
 
-# --- 8. RUN APP ---
+# --- 9. RUN APP ---
 if __name__ == '__main__':
     app.run(debug=True)

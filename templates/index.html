@@ -12,7 +12,7 @@
     <div class="slide slide3"></div>
   </section>
 
-  <!-- Courses Section -->
+  
   <!-- Courses Section -->
 <section id="courses" class="row courses">
   <div class="col-12 col-md-6 col-lg-3 mb-4">
@@ -23,7 +23,10 @@
         <p class="card-text">
           From beginner to expert — build a strong foundation and step into the world of AI, Machine Learning, and Big Data.
         </p>
-        <a href="#" class="btn btn-primary">Learn More</a>
+        <form action="{{ url_for('handle_enroll') }}" method="POST">
+            <input type="hidden" name="course_name" value="Data Science">
+            <button type="submit" class="btn btn-primary">Learn More</button>
+        </form>
       </div>
     </div>
   </div>
@@ -36,7 +39,10 @@
         <p class="card-text">
           Learn the latest digital marketing strategies including SEO, SEM, social media marketing, email campaigns, and content creation.
         </p>
-        <a href="#" class="btn btn-primary">Learn More</a>
+        <form action="{{ url_for('handle_enroll') }}" method="POST">
+            <input type="hidden" name="course_name" value="Digital Marketing">
+            <button type="submit" class="btn btn-primary">Learn More</button>
+        </form>
       </div>
     </div>
   </div>
@@ -49,7 +55,10 @@
         <p class="card-text">
           This course will help you become job-ready for roles like Data Analyst, Business Analyst, or Reporting Specialist.
         </p>
-        <a href="#" class="btn btn-primary">Learn More</a>
+       <form action="{{ url_for('handle_enroll') }}" method="POST">
+            <input type="hidden" name="course_name" value="Data Analyst">
+            <button type="submit" class="btn btn-primary">Learn More</button>
+        </form>
       </div>
     </div>
   </div>
@@ -62,94 +71,142 @@
         <p class="card-text">
           Learn how to design, deploy, and manage applications on leading cloud platforms like AWS, Microsoft Azure, and Google Cloud.
         </p>
-        <a href="#" class="btn btn-primary">Learn More</a>
+        <form action="{{ url_for('handle_enroll') }}" method="POST">
+            <input type="hidden" name="course_name" value="Cloud Computing">
+            <button type="submit" class="btn btn-primary">Learn More</button>
+        </form>
       </div>
     </div>
   </div>
 </section>
-<div class="cert-slider">
-    <input type="radio" name="cert-radio" id="cert1" checked>
-    <input type="radio" name="cert-radio" id="cert2">
-    <input type="radio" name="cert-radio" id="cert3">
 
-    <div class="cert-slides">
-        <div class="cert-sli">
-            <img src="{{url_for('static',filename='images/cloud.jpg')}}" alt="Certificate 1">
-        </div>
-        <div class="cert-sli">
-            <img src="{{url_for('static',filename='images/cloud.jpg')}}" alt="Certificate 2">
-        </div>
-        <div class="cert-sli">
-            <img src="{{url_for('static',filename='images/cloud.jpg')}}" alt="Certificate 3">
-        </div>
+<div class="slider">
+    <input type="radio" name="slide" id="slide1" checked>
+    <input type="radio" name="slide" id="slide2">
+    <input type="radio" name="slide" id="slide3">
+<div class="slides">
+      
+      <div class="sli">
+        <img src="{{ url_for('static', filename='images/power.jpg') }}" alt="Slide 1">
+      </div>
+      <div class="sli">
+        <img src="{{ url_for('static', filename='images/be10x.jpg') }}" alt="Slide 2">
+      </div>
+      <div class="sli">
+        <img src="{{ url_for('static', filename='images/digital.jpg') }}" alt="Slide 3">
+      </div>
     </div>
 
-    <div class="cert-navigation">
-        <label for="cert1" class="nav-btn" id="btn1"></label>
-        <label for="cert2" class="nav-btn" id="btn2"></label>
-        <label for="cert3" class="nav-btn" id="btn3"></label>
+    <!-- Navigation buttons -->
+    <div class="navigation">
+      <label for="slide1" class="nav-btn" id="btn1"></label>
+      <label for="slide2" class="nav-btn" id="btn2"></label>
+      <label for="slide3" class="nav-btn" id="btn3"></label>
+      <label for="slide4" class="nav-btn" id="btn4"></label>
     </div>
 
-    <div class="cert-manual-nav">
-        <label for="cert3" class="prev-btn prev-cert1">❮</label>
-        <label for="cert1" class="prev-btn prev-cert2">❮</label>
-        <label for="cert2" class="prev-btn prev-cert3">❮</label>
+    <!-- Next/Prev buttons -->
+    <div class="manual-nav">
+      <div class="prev">
+        <label for="slide4" class="prev-btn">‹</label>
+        <label for="slide1" class="prev-btn">‹</label>
+        <label for="slide2" class="prev-btn">‹</label>
+        <label for="slide3" class="prev-btn">‹</label>
+      </div>
 
-        <label for="cert2" class="next-btn next-cert1">❯</label>
-        <label for="cert3" class="next-btn next-cert2">❯</label>
-        <label for="cert1" class="next-btn next-cert3">❯</label>
+      <div class="next">
+        <label for="slide2" class="next-btn">›</label>
+        <label for="slide3" class="next-btn">›</label>
+        <label for="slide4" class="next-btn">›</label>
+        <label for="slide1" class="next-btn">›</label>
+      </div>
     </div>
-</div>
+
+  </div>
   <!-- Placement Section -->
-<div class="logo-scroller-container">
+<!-- <div class="logo-scroller-container">
 
         <div class="scroller" data-direction="right">
             <div class="scroller-inner">
                     <img src="{{url_for('static',filename='images/nobroker.png')}}" alt="NoBroker">
                     <img src="{{url_for('static',filename='images/hdfc.png')}}" alt="HDB" height="50">
-                    <img src="https://companieslogo.com/img/orig/VOLTAS.NS_BIG-544c7e59.png" alt="Voltas" height="50">
-                    <img src="https://companieslogo.com/img/orig/ESSARSTEEL.NS_BIG-f3d2341d.png" alt="Essar" height="50">
-    
-
-                <img src="{{url_for('static',filename='images/infosys.png')}}" alt="Infosys">
-                <img src="https://1000logos.net/wp-content/uploads/2016/10/Accenture-Logo-2001.png" alt="Accenture">
-                <img src="https:c:\Users\Bashir\Desktop\//upload.wikimedia.org/wikipedia/commons/thumb/2/2b/DeloitteNewLogo.png/1200px-DeloitteNewLogo.png" alt="Deloitte">
-               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/DeloitteNewLogo.png/1200px-DeloitteNewLogo.png" alt="Deloitte">
-                <img src="https://logolook.net/wp-content/uploads/2023/02/Adani-Group-Logo.png" alt="Adani">
-                <img src="{{url_for('static',filename='images/tcs.png')}}" alt="TCS">
-                <img src="https://companieslogo.com/img/orig/RELIANCE.NS-64973358.png" alt="Reliance">
-                <img src="https://companieslogo.com/img/orig/WIPRO.NS-72354716.png" alt="Wipro">
-                <img src="https://www.logotag.org/logo/HDB_Financial_Services-logo-300x120.png" alt="HDB">
-                <img src="https://vectorlogoseek.com/wp-content/uploads/2019/12/voltas-vector-logo.png" alt="Voltas">
-                <img src="https://seeklogo.com/images/E/essar-group-logo-04313BB01B-seeklogo.com.png" alt="Essar">
-                <img src="https://companieslogo.com/img/orig/INFY.NS-c8843939.png" alt="Infosys">
-                <img src="https://1000logos.net/wp-content/uploads/2016/10/Accenture-Logo-2001.png" alt="Accenture">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/DeloitteNewLogo.png/1200px-DeloitteNewLogo.png" alt="Deloitte">
-                <img src="https://cdn.iconscout.com/icon/free/png-256/free-lenskart-3367576-2808794.png" alt="Lenskart">
+                    <img src="{{url_for('static',filename='images/voltas.png')}}" alt="Voltas" height="50">
+                    <img src="{{url_for('static',filename='images/easser.png')}}" alt="Essar" height="50">
+                    <img src="{{url_for('static',filename='images/infosys.png')}}" alt="Infosys">
+                    <img src="{{url_for('static',filename='images/accenture.jpg')}}" alt="Accenture">
+                    <img src="{{url_for('static',filename='images/Deilott.jpeg')}}" alt="Deloitte">      
+                    <img src="{{url_for('static',filename='images/adani.png')}}" alt="Adani">
+                    <img src="{{url_for('static',filename='images/tcs.png')}}" alt="TCS">
+                    <img src="{{url_for('static',filename='images/reliance.jpg')}}" alt="Reliance">                
+                    <img src="{{url_for('static',filename='images/lenskart.png')}}" alt="Lenskart">
             </div>
         </div>
 
         <div class="scroller">
             <div class="scroller-inner">
-                <img src="https://assets.nobroker.in/nb-new/public/Common/nobroker-logo.png" alt="NoBroker">
+                
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/ICICI_Bank_Logo.svg/2560px-ICICI_Bank_Logo.svg.png" alt="ICICI Bank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/LIC_Logo_in_English.svg/1280px-LIC_Logo_in_English.svg.png" alt="LIC">
+                <img src="{{url_for('static',filename='images/Lic.jpeg')}}" alt="LIC"> 
+                <img src="{{url_for('static',filename='images/zomato.jpeg')}}" alt="Zomato">
+                <img src="{{url_for('static',filename='images/dmart.jpeg')}}" alt="D-Mart">
+                <img src="{{url_for('static',filename='images/CA.jpeg')}}" alt="CA India">
+                <img src="{{url_for('static',filename='images/burger.jpeg')}}" alt="Burger King">               
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/1200px-McDonald%27s_Golden_Arches.svg.png" alt="McDonald's">
-                <img src="https://1000logos.net/wp-content/uploads/2021/05/Zomato-logo.png" alt="Zomato">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/DMart_logo.svg/1280px-DMart_logo.svg.png" alt="D-Mart">
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Icai_logo.svg/800px-Icai_logo.svg.png" alt="CA India">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Burger_King_logo_%282020%29.svg/2048px-Burger_King_logo_%282020%29.svg.png" alt="Burger King">
-                <img src="https://assets.nobroker.in/nb-new/public/Common/nobroker-logo.png" alt="NoBroker">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/ICICI_Bank_Logo.svg/2560px-ICICI_Bank_Logo.svg.png" alt="ICICI Bank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/LIC_Logo_in_English.svg/1280px-LIC_Logo_in_English.svg.png" alt="LIC">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/1200px-McDonald%27s_Golden_Arches.svg.png" alt="McDonald's">
-                <img src="https://1000logos.net/wp-content/uploads/2021/05/Zomato-logo.png" alt="Zomato">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/DMart_logo.svg/1280px-DMart_logo.svg.png" alt="D-Mart">
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5e/Icai_logo.svg/800px-Icai_logo.svg.png" alt="CA India">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Burger_King_logo_%282020%29.svg/2048px-Burger_King_logo_%282020%29.svg.png" alt="Burger King">
+                             
             </div>
         </div>
 
+    </div> -->
+    <div class="logo-scroller-container">
+
+    <div class="scroller" data-direction="right">
+        <div class="scroller-inner">
+            <img src="{{url_for('static',filename='images/nobroker.png')}}" alt="NoBroker">
+            <img src="{{url_for('static',filename='images/hdfc.png')}}" alt="HDB" height="50">
+            <img src="{{url_for('static',filename='images/voltas.png')}}" alt="Voltas" height="50">
+            <img src="{{url_for('static',filename='images/easser.png')}}" alt="Essar" height="50">
+            <img src="{{url_for('static',filename='images/infosys.png')}}" alt="Infosys">
+            <img src="{{url_for('static',filename='images/accenture.jpg')}}" alt="Accenture">
+            <img src="{{url_for('static',filename='images/Deilott.jpeg')}}" alt="Deloitte">
+            <img src="{{url_for('static',filename='images/adani.png')}}" alt="Adani">
+            <img src="{{url_for('static',filename='images/tcs.png')}}" alt="TCS">
+            <img src="{{url_for('static',filename='images/reliance.jpg')}}" alt="Reliance">
+            <img src="{{url_for('static',filename='images/lenskart.png')}}" alt="Lenskart">
+
+            <img src="{{url_for('static',filename='images/nobroker.png')}}" alt="NoBroker">
+            <img src="{{url_for('static',filename='images/hdfc.png')}}" alt="HDB" height="50">
+            <img src="{{url_for('static',filename='images/voltas.png')}}" alt="Voltas" height="50">
+            <img src="{{url_for('static',filename='images/easser.png')}}" alt="Essar" height="50">
+            <img src="{{url_for('static',filename='images/infosys.png')}}" alt="Infosys">
+            <img src="{{url_for('static',filename='images/accenture.jpg')}}" alt="Accenture">
+            <img src="{{url_for('static',filename='images/Deilott.jpeg')}}" alt="Deloitte">
+            <img src="{{url_for('static',filename='images/adani.png')}}" alt="Adani">
+            <img src="{{url_for('static',filename='images/tcs.png')}}" alt="TCS">
+            <img src="{{url_for('static',filename='images/reliance.jpg')}}" alt="Reliance">
+            <img src="{{url_for('static',filename='images/lenskart.png')}}" alt="Lenskart">
+        </div>
     </div>
+
+    <div class="scroller">
+        <div class="scroller-inner">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/ICICI_Bank_Logo.svg/2560px-ICICI_Bank_Logo.svg.png" alt="ICICI Bank">
+            <img src="{{url_for('static',filename='images/Lic.jpeg')}}" alt="LIC">
+            <img src="{{url_for('static',filename='images/zomato.jpeg')}}" alt="Zomato">
+            <img src="{{url_for('static',filename='images/dmart.jpeg')}}" alt="D-Mart">
+            <img src="{{url_for('static',filename='images/CA.jpeg')}}" alt="CA India">
+            <img src="{{url_for('static',filename='images/burger.jpeg')}}" alt="Burger King">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/1200px-McDonald%27s_Golden_Arches.svg.png" alt="McDonald's">
+            
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/ICICI_Bank_Logo.svg/2560px-ICICI_Bank_Logo.svg.png" alt="ICICI Bank">
+            <img src="{{url_for('static',filename='images/Lic.jpeg')}}" alt="LIC">
+            <img src="{{url_for('static',filename='images/zomato.jpeg')}}" alt="Zomato">
+            <img src="{{url_for('static',filename='images/dmart.jpeg')}}" alt="D-Mart">
+            <img src="{{url_for('static',filename='images/CA.jpeg')}}" alt="CA India">
+            <img src="{{url_for('static',filename='images/burger.jpeg')}}" alt="Burger King">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/1200px-McDonald%27s_Golden_Arches.svg.png" alt="McDonald's">
+        </div>
+    </div>
+
+</div>
 
   {% endblock %}

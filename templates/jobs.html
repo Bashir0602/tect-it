@@ -11,40 +11,40 @@
 <!-- ===============================
      Jobs Section
 =============================== -->
-<div class="container jobs-page">
+    <div class="container jobs-page-sucess">
   <h3 class="section-heading pb-3 mb-4 font-italic border-bottom text-center">
     Career & Internship Opportunities
   </h3>
 
   <!-- ====== Row 1 ====== -->
-  <div class="row">
+  <div class="row" align-items-start>
     <div class="col-12 col-md-6 mb-4">
-      <div class="card flex-md-row shadow-sm h-100">
+      <div class="card flex-md-row shadow-sm ">
         <div class="card-body d-flex flex-column align-items-start">
-          <strong class="d-inline-block mb-2 text-primary">Technology</strong>
-          <h5 class="mb-1"><a class="text-dark" href="#">Front-End Developer Internship</a></h5>
-          <div class="mb-2 text-muted small">Posted: Nov 12</div>
+          <strong class="d-inline-block mb-2 text-primary">Internships &amp; Live Projects</strong>
+          <h5 class="mb-1"><a class="text-dark" href="#"></a></h5>
+          <div class="mb-2 text-muted small">Posted: Nov 10</div>
           <p class="card-text mb-auto">
-            Join a dynamic team building responsive, user-friendly web applications using React and Bootstrap.
+            Step beyond the classroom and dive into real-world experience. Our live projects connect you with industry mentors, helping you apply your knowledge to solve actual business problems.
           </p>
           <a class="btn btn-outline-primary btn-sm mt-3" href="#">Apply Now</a>
         </div>
-        <img class="card-img-right d-none d-lg-block" src="{{ url_for('static', filename='images/job1.jpg') }}" alt="Front-End Developer">
+        <img class="card-image" src="{{url_for('static',filename='images/internship.png')}}" alt="Front-End Developer">
       </div>
     </div>
 
     <div class="col-12 col-md-6 mb-4">
-      <div class="card flex-md-row shadow-sm h-100">
+      <div class="card flex-md-row shadow-sm">
         <div class="card-body d-flex flex-column align-items-start">
-          <strong class="d-inline-block mb-2 text-success">Marketing</strong>
-          <h5 class="mb-1"><a class="text-dark" href="#">Digital Marketing Executive</a></h5>
-          <div class="mb-2 text-muted small">Posted: Nov 11</div>
+          <strong class="d-inline-block mb-2 text-success">Placement Drives &amp; Partner Recruitments</strong>
+          <h5 class="mb-1"><a class="text-dark" href="#"></a></h5>
+          <div class="mb-2 text-muted small">Posted: Nov 13</div>
           <p class="card-text mb-auto">
-            Lead SEO, SEM, and social campaigns to grow online presence and engagement.
+            Get exclusive access to Tech-IT’s network of hiring partners. Participate in placement drives designed to match your talent with the right opportunity in tech&nbsp;industries.
           </p>
           <a class="btn btn-outline-success btn-sm mt-3" href="#">Apply Now</a>
         </div>
-        <img class="card-img-right d-none d-lg-block" src="{{ url_for('static', filename='images/job2.jpg') }}" alt="Marketing Role">
+        <img class="card-image" src="{{url_for('static',filename='images/placement.png')}}" alt="Marketing Role">
       </div>
     </div>
   </div>
@@ -52,17 +52,17 @@
   <!-- ====== Row 2 ====== -->
   <div class="row">
     <div class="col-12 col-md-6 mb-4">
-      <div class="card border-primary flex-md-row shadow-sm h-100">
+      <div class="card border-primary flex-md-row shadow-sm">
         <div class="card-body d-flex flex-column align-items-start">
-          <strong class="d-inline-block mb-2 text-primary">Design</strong>
-          <h5 class="mb-1"><a class="text-dark" href="#">UI/UX Designer</a></h5>
-          <div class="mb-2 text-muted small">Posted: Nov 10</div>
+          <strong class="d-inline-block mb-2 text-primary"> Leadership &amp; Mentorship Programs</strong>
+          <h5 class="mb-1"><a class="text-dark" href="#"></a></h5>
+          <div class="mb-2 text-muted small">Posted: Nov 15</div>
           <p class="card-text mb-auto">
-            Create visually appealing, user-centered designs for mobile and web interfaces.
+          Develop essential leadership and communication skills under the guidance of seasoned mentors. Prepare to lead with confidence in the ever-evolving world&nbsp;of&nbsp;technology.
           </p>
           <a class="btn btn-outline-primary btn-sm mt-3" href="#">Apply Now</a>
         </div>
-        <img class="card-img-right d-none d-lg-block" src="{{ url_for('static', filename='images/job3.jpg') }}" alt="UI/UX Designer">
+        <img class="card-image" src="{{url_for('static',filename='images/Leadership.png')}}" alt="UI/UX Designer">
       </div>
     </div>
 
@@ -70,23 +70,28 @@
       <div class="card border-success flex-md-row shadow-sm h-100">
         <div class="card-body d-flex flex-column align-items-start">
           <strong class="d-inline-block mb-2 text-success">Business</strong>
-          <h5 class="mb-1"><a class="text-dark" href="#">Data Analyst</a></h5>
+          <h5 class="mb-1"><a class="text-dark" href="#"></a></h5>
           <div class="mb-2 text-muted small">Posted: Nov 9</div>
           <p class="card-text mb-auto">
             Interpret complex data, analyze results, and deliver insights to support decision-making.
           </p>
           <a class="btn btn-outline-success btn-sm mt-3" href="#">Apply Now</a>
         </div>
-        <img class="card-img-right d-none d-lg-block" src="{{ url_for('static', filename='images/job4.jpg') }}" alt="Data Analyst">
+        <img class="card-img-right d-none d-lg-block" src="/static/images/job4.jpg" alt="Data Analyst">
       </div>
     </div>
   </div>
+
+   <div class="container jobs-page">
+  <h3 class="section-heading pb-3 mb-4 font-italic border-bottom text-center">
+    Sucess Stories
+  </h3>
 
   <!-- ====== Row 3 (Compact Cards) ====== -->
   <div class="row">
     <div class="col-12 col-md-4 mb-4">
       <div class="card h-100 shadow-sm">
-        <img class="card-img-top" src="{{ url_for('static', filename='images/job5.jpg') }}" alt="Software Tester">
+        <img class="card-img-top" src="/static/images/job5.jpg" alt="Software Tester">
         <div class="card-body">
           <h5 class="card-title">Software Tester</h5>
           <p class="card-text">Test software applications for bugs and usability to ensure quality performance.</p>
@@ -97,7 +102,7 @@
 
     <div class="col-12 col-md-4 mb-4">
       <div class="card h-100 shadow-sm border-dark">
-        <img class="card-img-top" src="{{ url_for('static', filename='images/job6.jpg') }}" alt="Cloud Engineer">
+        <img class="card-img-top" src="/static/images/job6.jpg" alt="Cloud Engineer">
         <div class="card-body">
           <h5 class="card-title">Cloud Engineer</h5>
           <p class="card-text">Work on AWS and Azure infrastructure — manage, deploy, and secure cloud resources.</p>
@@ -108,7 +113,7 @@
 
     <div class="col-12 col-md-4 mb-4">
       <div class="card h-100 text-white bg-dark shadow-sm">
-        <img class="card-img-top" src="{{ url_for('static', filename='images/job7.jpg') }}" alt="Cybersecurity Specialist">
+        <img class="card-img-top" src="/static/images/job7.jpg" alt="Cybersecurity Specialist">
         <div class="card-body">
           <h5 class="card-title">Cybersecurity Specialist</h5>
           <p class="card-text">Protect systems and networks from cyber threats using modern security techniques.</p>
@@ -118,4 +123,5 @@
     </div>
   </div>
 </div>
+</div>  
 {% endblock %}

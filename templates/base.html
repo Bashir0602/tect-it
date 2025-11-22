@@ -28,29 +28,7 @@
 </head>
 <body>
 
-      <!-- Navbar -->
-  <!-- <nav>
-    <div class="header">
-      <img id="logo" src="{{ url_for('static',filename='images/logo.jpg')}}" alt="Tech It" />
-
-      <form  method="post">
-        <div class="search-box">
-          <input type="text" placeholder="Type to search..." />
-          <button class="btn-icon"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </div>
-      </form>
      
-      <a id="home" class="nav-link active" href="{{url_for('index')}}">Home</a>
-      <a id="All"  href="{{url_for('courses')}}">All Courses</a>
-      <a id="jobs" href="{{url_for('jobs')}}">Opportunity</a>
-      <a id="about" href="{{url_for('about')}}">About Us</a>
-      {% if session.logged_in %}
-    <a href="{{ url_for('logout') }}">Logout</a>
-{% else %}
-    <a class="login" href="/login">Login/Register</a>
-{% endif %}
-    </div>
-  </nav> -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container">
     <!-- Logo -->
@@ -68,55 +46,70 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
       <!-- Search form (hidden on small screens) -->
-      <form class="d-none d-md-flex input-group mx-auto" style="max-width: 400px;">
-        <input type="search" class="form-control" placeholder="Type query" aria-label="Search" />
-        <button class="btn btn-outline-primary" type="button">Search</button>
+      <!-- <form class="d-none d-md-flex input-group mx-auto" style="max-width: 400px;"> -->
+        <form class="d-flex input-group w-100 w-md-auto mx-md-auto my-2 my-md-0" style="max-width: 400px;" id="navSearchForm">
+        <input type="search" class="form-control" placeholder="Search Here " aria-label="Search" id="navSearchInput" />
+        <button  class="btn btn-outline-primary" type="submit">Search</button>
       </form>
 
-      <!-- Navbar links -->
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link d-flex flex-column text-center active" href="{{ url_for('index') }}">
-            <i class="fas fa-home fa-lg my-2"></i><span class="small">Home</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link d-flex flex-column text-center" href="{{ url_for('courses') }}">
-            <i class="fas fa-user-friends fa-lg my-2"></i><span class="small">Courses</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link d-flex flex-column text-center" href="{{ url_for('jobs') }}">
-            <i class="fas fa-briefcase fa-lg my-2"></i><span class="small">Jobs</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link d-flex flex-column text-center" href="{{ url_for('about') }}">
-            <i class="fas fa-comment-dots fa-lg my-2"></i><span class="small">About Us</span>
-          </a>
-        </li>
-
         <!-- Login/Profile section -->
-        {% if session.get('logged_in') %}
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink"
-             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(9).jpg"
-                 class="rounded-circle" height="30" alt="User" loading="lazy" />
-            <span class="ms-2">{{ session['user_name'] }}</span>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">My profile</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
-          </ul>
-        </li>
-        {% else %}
-        <li class="nav-item">
-          <a href="{{ url_for('handle_login') }}" class="btn btn-primary ms-2">Login</a>
-        </li>
-        {% endif %}
-      </ul>
+       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+  
+  <li class="nav-item">
+    <!-- This line adds the 'active' class if active_page is 'home' -->
+    <a class="nav-link d-flex flex-column text-center {% if active_page == 'home' %}active{% endif %}"
+      href="{{ url_for('index') }}">
+      <i class="fas fa-home fa-lg my-2"></i><span class="small">Home</span>
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <!-- This line adds the 'active' class if active_page is 'courses' -->
+    <a class="nav-link d-flex flex-column text-center {% if active_page == 'courses' %}active{% endif %}"
+      href="{{ url_for('courses') }}">
+      <i class="fas fa-user-friends fa-lg my-2"></i><span class="small">Courses</span>
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <!-- This line adds the 'active' class if active_page is 'jobs' -->
+    <a class="nav-link d-flex flex-column text-center {% if active_page == 'jobs' %}active{% endif %}"
+      href="{{ url_for('jobs') }}">
+      <i class="fas fa-briefcase fa-lg my-2"></i><span class="small">Jobs</span>
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <!-- This line adds the 'active' class if active_page is 'about' -->
+    <a class="nav-link d-flex flex-column text-center {% if active_page == 'about' %}active{% endif %}"
+      href="{{ url_for('about') }}">
+      <i class="fas fa-comment-dots fa-lg my-2"></i><span class="small">About Us</span>
+    </a>
+  </li>
+
+  <!-- Login/Profile section -->
+  {% if session.get('logged_in') %}
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button"
+      data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(9).jpg" class="rounded-circle" height="30" alt="User"
+        loading="lazy" />
+      <span class="ms-2">{{ session['user_name'] }}</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+      <li><a class="dropdown-item" href="#">My profile</a></li>
+      <li><a class="dropdown-item" href="#">Settings</a></li>
+      <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
+    </ul>
+  </li>
+  {% else %}
+  <li class="nav-item ">
+    <a href="{{ url_for('handle_login') }}" class="btn btn-primary ms-lg-2">Login</a>
+  </li>
+  {% endif %}
+  
+</ul>
+      
     </div>
   </div>
 </nav>
@@ -133,51 +126,48 @@
 {% endwith %}
   {% block content %} {% endblock %}
 
-  <!-- Footer
-  <footer class="foot py-5">
-    <div class="row">
-      <div class="col-6 col-md-2 mb-4">
-        <h5>Our Branches</h5>
-        <ul class="branch">
-          <li class="nav-item mb-2"><a href="https://www.google.com/maps?q=28.6139,77.2090" class="nav-link p-0 text-body-secondary">Kalyan East</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Kandivali</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Dombivli</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Thane</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Ambivali</a></li>
-        </ul>
-      </div>
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>About Us</h3>
+            <p>Empowering individuals with the skills and confidence needed to achieve their career goals.</p><br><br>
+            <h5>Our Branches</h5>
+            <ul>
+              <li>Kalyan West</li>
+              <li>Dombivli</li>
+              <li>Ambivali</li>
+              
+            </ul>
+        </div>
 
-      <div class="col-6 col-md-2 mb-3 contact">
-        <h5>Contact Us</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="tel:+918689960170" class="nav-link p-0 text-body-secondary"><i class="fa-solid fa-phone"></i> +91 8689960170</a></li>
-          <li class="nav-item mb-2"><a href="tel:+917045445520" class="nav-link p-0 text-body-secondary"><i class="fa-solid fa-phone"></i> +91 7045445520</a></li>
-          <li class="nav-item mb-2"><a href="https://www.instagram.com" class="nav-link p-0 text-body-secondary"><i class="fa-brands fa-instagram"></i> techitcareer</a></li>
-          <li class="nav-item mb-2"><a href="https://www.facebook.com" class="nav-link p-0 text-body-secondary"><i class="fa-brands fa-facebook-f"></i> Tech-it</a></li>
-         
-          <pre class="gmail"><li class="nav-item mb-2"><a href="mailto:techitcareer08@gmail.com" class="nav-link p-0 text-body-secondary"><i class="fa-solid fa-envelope"></i> techitcareer08@gmail.com</a></li></pre>
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('courses') }}">Courses</a></li>
+                <li><a href="{{ url_for('jobs') }}">jobs</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+            </ul>
+        </div>
 
-          
-        </ul>
-      </div>
-
-      <div class="col-md-5 offset-md-1 mb-3 inform">
-        <form>
-          <h5>If Interested, Send Us an Email</h5>
-          <p>Get detailed information about our courses.</p>
-          <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-            <input id="newsletter1" type="email" class="form-control" placeholder="Email address" />
-            <button class="btn btn-primary" type="button">Send</button>
-          </div>
-        </form>
-      </div>
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+           <a href="techitcareer08@gmail.com"><p><i class="fa-solid fa-envelope"></i> Email: techitcareer08@gmail.com</p></a>
+            <a href="tel:+918689960170"><p><i class="fa-solid fa-phone"></i> Phone: +91 86899 60170</p></a>
+           <a href="https://www.instagram.com"> <p><i class="fa-brands fa-instagram"></i> Instagram: techitcareer</p></a>
+        </div>
     </div>
 
-    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-      <p>© 2025 Tech-IT, Inc. All rights reserved.</p>
-      
+    <div class="footer-bottom">
+        <div class="social-icons">
+            <a href="https://www.instagram.com" aria-label="Instagram"><i class="fa-brands fa-square-instagram"></i></a>
+            <a href="https://www.facebook.com" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-square-whatsapp"></i></a>
+        </div>
+        <p class="copyright-text">&copy; 2025 YourCompanyName. All Rights Reserved.</p>
     </div>
-  </footer> -->
+</footer>
 
   <!-- Bootstrap JS -->
   <script
@@ -190,5 +180,52 @@
   type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.min.js"
 ></script>
+<!-- JavaScript code -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    
+    const searchForm = document.getElementById('navSearchForm');
+    const searchInput = document.getElementById('navSearchInput');
+
+    
+    searchForm.addEventListener('submit', function(event) {
+        
+        
+        event.preventDefault(); 
+        
+        
+        let query = searchInput.value.trim().toLowerCase();
+
+        
+        if (query === 'home') {
+            
+            window.location.href = "{{ url_for('index') }}"; 
+        
+        } else if (query === 'courses') {
+            window.location.href = "{{ url_for('courses') }}";
+        
+        } else if (query === 'jobs') {
+            
+            window.location.href = "{{ url_for('jobs') }}";
+        
+        } else if (query === 'about') {
+            
+            window.location.href = "{{ url_for('about') }}";
+        
+        }else if (query === 'login') {
+            
+            window.location.href = "{{ url_for('handle_login') }}";
+        
+        }
+         else {
+            
+            let searchUrl = "{{ url_for('index') }}?query=" + encodeURIComponent(query);
+            window.location.href = searchUrl;
+        }
+    });
+});
+
+</script>
 </body>
 </html> 
